@@ -23,6 +23,17 @@ app.run(function($ionicPlatform) {
   });
 })
 
+app.config(function($ionicConfigProvider) {
+  $ionicConfigProvider.views.maxCache(5);
+  //配置android平台的缓存
+  $ionicConfigProvider.platform.android.views.maxCache(5);
+
+  // note that you can also chain configs
+  $ionicConfigProvider.backButton.text('Go Back').icon('ion-chevron-left');
+
+  $ionicConfigProvider.tabs.position('bottom');
+});
+
 app.config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states

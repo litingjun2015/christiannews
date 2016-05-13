@@ -9,7 +9,7 @@ angular.module('christiannews.controllers')
 
     console.log('doRefresh');
 
-    var url="http://127.0.0.1:8081/listArticles/classid=1" + "&start="+ $rootScope.getAlertStartId + "&fetch=5";
+    var url="http://192.168.31.207:8081/listArticles/classid=1" + "&start="+ $rootScope.getAlertStartId + "&fetch=5";
     console.log(url);
     $http.get(url)
       .success(function (response)
