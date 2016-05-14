@@ -35,6 +35,60 @@ angular.module('christiannews')
         }
       }
     })
+    .state('tab.ministries', {
+      url: '/ministries',
+      views: {
+        'tab-news': {
+          templateUrl: 'templates/tab-ministries.html',
+          controller: 'MinistriesCtrl'
+        }
+      }
+    })
+    .state('tab.world', {
+      url: '/world',
+      views: {
+        'tab-news': {
+          templateUrl: 'templates/tab-world.html',
+          controller: 'WorldCtrl'
+        }
+      }
+    })
+    .state('tab.society', {
+      url: '/society',
+      views: {
+        'tab-news': {
+          templateUrl: 'templates/tab-society.html',
+          controller: 'SocietyCtrl'
+        }
+      }
+    })
+    .state('tab.culture', {
+      url: '/culture',
+      views: {
+        'tab-news': {
+          templateUrl: 'templates/tab-culture.html',
+          controller: 'CultureCtrl'
+        }
+      }
+    })
+    .state('tab.tech', {
+      url: '/tech',
+      views: {
+        'tab-news': {
+          templateUrl: 'templates/tab-tech.html',
+          controller: 'TechCtrl'
+        }
+      }
+    })
+    .state('tab.opinion', {
+      url: '/opinion',
+      views: {
+        'tab-news': {
+          templateUrl: 'templates/tab-opinion.html',
+          controller: 'OpinionCtrl'
+        }
+      }
+    })
 
     .state('tab.dash', {
       url: '/dash',
