@@ -6,8 +6,8 @@ angular.module('christiannews.controllers')
 
 .controller('SocietyCtrl', function($scope, $rootScope, ToastService, $http, myConfig) {
 
-  $rootScope.homeStartId = 0;
-  $rootScope.homenewslist = '';
+  $rootScope.societyStartId = 0;
+  $rootScope.societynewslist = '';
 
   $scope.$watch('$viewContentLoaded', function() {
     $scope.doRefresh();
@@ -16,31 +16,31 @@ angular.module('christiannews.controllers')
 
   $scope.doRefresh = function() {
 
-    var url = myConfig.backend + "/listArticles/classid=1" + "&start="+ $rootScope.homeStartId + "&fetch=" + myConfig.fetchNum;
+    var url = myConfig.backend + "/listArticles/classid=5" + "&start="+ $rootScope.societyStartId + "&fetch=" + myConfig.fetchNum;
     console.log(url);
     $http.get(url)
       .success(function (response)
       {
-        if($rootScope.homenewslist == '')
-          $rootScope.homenewslist = response;
+        if($rootScope.societynewslist == '')
+          $rootScope.societynewslist = response;
         else
-          $rootScope.homenewslist = response.concat($rootScope.homenewslist);
+          $rootScope.societynewslist = response.concat($rootScope.societynewslist);
 
-        console.log($rootScope.homenewslist);
-        $rootScope.homeStartId=$rootScope.homeStartId+myConfig.fetchNum;
+        console.log($rootScope.societynewslist);
+        $rootScope.societyStartId=$rootScope.societyStartId+myConfig.fetchNum;
 
-        console.log($rootScope.homenewslist.length);
+        console.log($rootScope.societynewslist.length);
 
-        if($rootScope.homeStartId > $rootScope.homenewslist.length)
+        if($rootScope.societyStartId > $rootScope.societynewslist.length)
         {
           ToastService.showShortCenter('没有新内容了');
-          $rootScope.homeStartId = $rootScope.homenewslist.length;
+          $rootScope.societyStartId = $rootScope.societynewslist.length;
         }
 
       }).error(function(response) {
 
       ToastService.showShortCenter('获取数据失败');
-      //$rootScope.homeStartId = $rootScope.homeStartId-myConfig.fetchNum;
+      //$rootScope.societyStartId = $rootScope.societyStartId-myConfig.fetchNum;
 
     });
 

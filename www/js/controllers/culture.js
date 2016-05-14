@@ -6,8 +6,8 @@ angular.module('christiannews.controllers')
 
 .controller('CultureCtrl', function($scope, $rootScope, ToastService, $http, myConfig) {
 
-  $rootScope.homeStartId = 0;
-  $rootScope.homenewslist = '';
+  $rootScope.cultureStartId = 0;
+  $rootScope.culturenewslist = '';
 
   $scope.$watch('$viewContentLoaded', function() {
     $scope.doRefresh();
@@ -16,31 +16,31 @@ angular.module('christiannews.controllers')
 
   $scope.doRefresh = function() {
 
-    var url = myConfig.backend + "/listArticles/classid=1" + "&start="+ $rootScope.homeStartId + "&fetch=" + myConfig.fetchNum;
+    var url = myConfig.backend + "/listArticles/classid=7" + "&start="+ $rootScope.cultureStartId + "&fetch=" + myConfig.fetchNum;
     console.log(url);
     $http.get(url)
       .success(function (response)
       {
-        if($rootScope.homenewslist == '')
-          $rootScope.homenewslist = response;
+        if($rootScope.culturenewslist == '')
+          $rootScope.culturenewslist = response;
         else
-          $rootScope.homenewslist = response.concat($rootScope.homenewslist);
+          $rootScope.culturenewslist = response.concat($rootScope.culturenewslist);
 
-        console.log($rootScope.homenewslist);
-        $rootScope.homeStartId=$rootScope.homeStartId+myConfig.fetchNum;
+        console.log($rootScope.culturenewslist);
+        $rootScope.cultureStartId=$rootScope.cultureStartId+myConfig.fetchNum;
 
-        console.log($rootScope.homenewslist.length);
+        console.log($rootScope.culturenewslist.length);
 
-        if($rootScope.homeStartId > $rootScope.homenewslist.length)
+        if($rootScope.cultureStartId > $rootScope.culturenewslist.length)
         {
           ToastService.showShortCenter('没有新内容了');
-          $rootScope.homeStartId = $rootScope.homenewslist.length;
+          $rootScope.cultureStartId = $rootScope.culturenewslist.length;
         }
 
       }).error(function(response) {
 
       ToastService.showShortCenter('获取数据失败');
-      //$rootScope.homeStartId = $rootScope.homeStartId-myConfig.fetchNum;
+      //$rootScope.cultureStartId = $rootScope.cultureStartId-myConfig.fetchNum;
 
     });
 

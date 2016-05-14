@@ -6,8 +6,8 @@ angular.module('christiannews.controllers')
 
 .controller('WorldCtrl', function($scope, $rootScope, ToastService, $http, myConfig) {
 
-  $rootScope.homeStartId = 0;
-  $rootScope.homenewslist = '';
+  $rootScope.worldStartId = 0;
+  $rootScope.worldnewslist = '';
 
   $scope.$watch('$viewContentLoaded', function() {
     $scope.doRefresh();
@@ -16,31 +16,31 @@ angular.module('christiannews.controllers')
 
   $scope.doRefresh = function() {
 
-    var url = myConfig.backend + "/listArticles/classid=1" + "&start="+ $rootScope.homeStartId + "&fetch=" + myConfig.fetchNum;
+    var url = myConfig.backend + "/listArticles/classid=4" + "&start="+ $rootScope.worldStartId + "&fetch=" + myConfig.fetchNum;
     console.log(url);
     $http.get(url)
       .success(function (response)
       {
-        if($rootScope.homenewslist == '')
-          $rootScope.homenewslist = response;
+        if($rootScope.worldnewslist == '')
+          $rootScope.worldnewslist = response;
         else
-          $rootScope.homenewslist = response.concat($rootScope.homenewslist);
+          $rootScope.worldnewslist = response.concat($rootScope.worldnewslist);
 
-        console.log($rootScope.homenewslist);
-        $rootScope.homeStartId=$rootScope.homeStartId+myConfig.fetchNum;
+        console.log($rootScope.worldnewslist);
+        $rootScope.worldStartId=$rootScope.worldStartId+myConfig.fetchNum;
 
-        console.log($rootScope.homenewslist.length);
+        console.log($rootScope.worldnewslist.length);
 
-        if($rootScope.homeStartId > $rootScope.homenewslist.length)
+        if($rootScope.worldStartId > $rootScope.worldnewslist.length)
         {
           ToastService.showShortCenter('没有新内容了');
-          $rootScope.homeStartId = $rootScope.homenewslist.length;
+          $rootScope.worldStartId = $rootScope.worldnewslist.length;
         }
 
       }).error(function(response) {
 
       ToastService.showShortCenter('获取数据失败');
-      //$rootScope.homeStartId = $rootScope.homeStartId-myConfig.fetchNum;
+      //$rootScope.worldStartId = $rootScope.worldStartId-myConfig.fetchNum;
 
     });
 
