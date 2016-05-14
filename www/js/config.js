@@ -10,6 +10,8 @@ angular.module('christiannews')
 
     'backend_pay': backend_pay,
 
+     'fetchNum': 8,
+
      // bizapp / duangwifi
      'client_id': 'EUyhtH5eKgXlJvAd-p3SH3yGwJHMGR2i',
      'client_secret': 'xNOaiMYndFMmver8qkVzn5Wn2T9eZMEc',

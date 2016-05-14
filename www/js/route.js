@@ -46,12 +46,12 @@ angular.module('christiannews')
         }
       }
     })
-    .state('tab.chat-detail', {
+    .state('tab.news-detail', {
       url: '/news/:newsId',
       views: {
         'tab-news': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+          templateUrl: 'templates/news-detail.html',
+          controller: 'NewsDetailCtrl'
         }
       }
     })
