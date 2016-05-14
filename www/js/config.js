@@ -1,14 +1,13 @@
 angular.module('christiannews')
  .constant('myConfig', (function () {
-   var backend = 'http://open.duanglink.com';
-   var backend_pay = 'http://www.duanglink.com/pay';
-   var backend_bizapp = 'http://www.duangwifi.cn/bizapp/v2-phone/www/';
-   //var backend_bizapp = 'http://192.168.31.193/bizapp/v2-phone/www/';
+   //var backend = 'http://192.168.31.207:3000';
+   var backend = 'http://www.duangwifi.cn:3000';
+
    //var backend_bizapp = '';
    var market = 'http://marketing.duanglink.com/backend/web';
    return {
 
-    'backend_pay': backend_pay,
+    'backend': backend,
 
      'fetchNum': 8,
 

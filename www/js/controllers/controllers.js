@@ -85,13 +85,13 @@ angular.module('christiannews.controllers')
 //
 //})
 
-.controller('NewsDetailCtrl', function($scope, $stateParams, Chats, $http) {
+.controller('NewsDetailCtrl', function($scope, $stateParams, Chats, $http, myConfig) {
 
   //$scope.origurl = "http://192.168.31.207:3000/article/" + $stateParams.newsId;
   //$scope.url = $sce.trustAsResourceUrl($scope.origurl);
 
 
-  var url="http://192.168.31.207:8081/article/" + $stateParams.newsId;
+  var url= myConfig.backend + "/article/" + $stateParams.newsId;
   console.log(url);
   $http.get(url)
     .success(function (response)

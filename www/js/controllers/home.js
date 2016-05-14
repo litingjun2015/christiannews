@@ -16,7 +16,7 @@ angular.module('christiannews.controllers')
 
   $scope.doRefresh = function() {
 
-    var url="http://192.168.31.207:8081/listArticles/classid=1" + "&start="+ $rootScope.homeStartId + "&fetch=" + myConfig.fetchNum;
+    var url = myConfig.backend + "/listArticles/classid=1" + "&start="+ $rootScope.homeStartId + "&fetch=" + myConfig.fetchNum;
     console.log(url);
     $http.get(url)
       .success(function (response)
@@ -29,10 +29,18 @@ angular.module('christiannews.controllers')
         console.log($rootScope.homenewslist);
         $rootScope.homeStartId=$rootScope.homeStartId+myConfig.fetchNum;
 
+        console.log($rootScope.homenewslist.length);
+
+        if($rootScope.homeStartId > $rootScope.homenewslist.length)
+        {
+          ToastService.showShortCenter('没有新内容了');
+          $rootScope.homeStartId = $rootScope.homenewslist.length;
+        }
+
       }).error(function(response) {
 
       ToastService.showShortCenter('获取数据失败');
-      $rootScope.homeStartId = $rootScope.homeStartId-myConfig.fetchNum;
+      //$rootScope.homeStartId = $rootScope.homeStartId-myConfig.fetchNum;
 
     });
 
