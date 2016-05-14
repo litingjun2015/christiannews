@@ -1,12 +1,20 @@
 <ion-view view-title="基督教新闻">
   <ion-header-bar class="bar bar-subheader">
-    <h1 class="title"><a href="#/tab/dash">要闻</a> <a href="#/tab/chats">财经</a> 娱乐 体育 科技</h1>
+    <h1 class="title">
+      <a href="#/tab/home">首页</a>
+      <a href="#/tab/church">教会</a>
+      <a href="#/tab/ministries">事工</a>
+      <a href="#/tab/world">国际</a>
+      <a href="#/tab/society">社会</a>
+      <a href="#/tab/culture">文化</a>
+      <a href="#/tab/tech">科技&财经</a>
+      <a href="#/tab/opinion">观点</a>
+      <a href="http://chinese.christianpost.com/gallery/">图库</a></h1>
   </ion-header-bar>
 
 
 
   <ion-content>
-
     <div class="bar bar-header item-input-inset" >
       <label class="item-input-wrapper textbox-search">
         <i class="icon ion-ios7-search placeholder-icon"></i>
@@ -14,6 +22,13 @@
       </label>
 
     </div>
+
+    <ion-refresher
+      pulling-text="下拉更新..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
+
+
 
     <ion-nav-title ng-show="!hasFilters">
       Users
@@ -24,9 +39,10 @@
     </ion-nav-buttons>
 
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="news in homenewslist" type="item-text-wrap" href="#/tab/chats/{{news.id}}">
+        <img ng-src="{{news.thumb}}">
+        <h2 >{{news.title}}</h2>
+        <p>{{news.author}}</p>
         <p>{{chat.lastText}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
 

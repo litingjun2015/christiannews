@@ -13,8 +13,9 @@
     <div class="item item-divider" style="font-size:14px;font-weight:normal;text-align:right">
       {{news.created_time * 1000 | date:'MM-dd HH:mm' }} - By: {{news.author}}
     </div>
-    <div class="item item-text-wrap" ng-bind-html="news.content"></div>
+    <!--<div class="item item-text-wrap" ng-bind-html="news.content"></div>-->
 
+    <span class="large" ng-bind-html="news.content"></span>
 
   </ion-content>
 </ion-view>
