@@ -20,9 +20,18 @@ angular.module('christiannews')
     .state('tab.home', {
       url: '/home',
       views: {
-        'tab-home': {
+        'tab-news': {
           templateUrl: 'templates/tab-home.html',
           controller: 'HomeCtrl'
+        }
+      }
+    })
+    .state('tab.church', {
+      url: '/church',
+      views: {
+        'tab-news': {
+          templateUrl: 'templates/tab-church.html',
+          controller: 'ChurchCtrl'
         }
       }
     })
@@ -42,7 +51,7 @@ angular.module('christiannews')
       views: {
         'tab-news': {
           templateUrl: 'templates/tab-news.html',
-          controller: 'ChatsCtrl'
+          controller: 'HomeCtrl'
         }
       }
     })
