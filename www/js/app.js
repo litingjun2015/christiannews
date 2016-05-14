@@ -29,7 +29,7 @@ app.config(function($ionicConfigProvider) {
   $ionicConfigProvider.platform.android.views.maxCache(5);
 
   // note that you can also chain configs
-  $ionicConfigProvider.backButton.text('Go Back').icon('ion-chevron-left');
+  $ionicConfigProvider.backButton.text('上一页').icon('ion-chevron-left');
 
   $ionicConfigProvider.tabs.position('bottom');
 });

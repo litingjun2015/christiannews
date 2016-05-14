@@ -94,16 +94,6 @@ angular.module('christiannews.controllers')
 
     });
 
-
-    //    $http.get('/new-items')
-    //     .success(function(newItems) {
-    //       $scope.items = newItems;
-    //     })
-    //     .finally(function() {
-    //       // Stop the ion-refresher from spinning
-    //       $scope.$broadcast('scroll.refreshComplete');
-    //     });
-
     $scope.$broadcast('scroll.refreshComplete');
   };
 
@@ -111,11 +101,11 @@ angular.module('christiannews.controllers')
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $http) {
 
-  //$scope.origurl = "http://192.168.31.207:3000/article/" + $stateParams.chatId;
+  //$scope.origurl = "http://192.168.31.207:3000/article/" + $stateParams.newsId;
   //$scope.url = $sce.trustAsResourceUrl($scope.origurl);
 
 
-  var url="http://192.168.31.207:8081/article/" + $stateParams.chatId;
+  var url="http://192.168.31.207:8081/article/" + $stateParams.newsId;
   console.log(url);
   $http.get(url)
     .success(function (response)

@@ -37,19 +37,19 @@ angular.module('christiannews')
       }
     })
 
-    .state('tab.chats', {
-      url: '/chats',
+    .state('tab.news', {
+      url: '/news',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
+        'tab-news': {
+          templateUrl: 'templates/tab-news.html',
           controller: 'ChatsCtrl'
         }
       }
     })
     .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+      url: '/news/:newsId',
       views: {
-        'tab-chats': {
+        'tab-news': {
           templateUrl: 'templates/chat-detail.html',
           controller: 'ChatDetailCtrl'
         }
