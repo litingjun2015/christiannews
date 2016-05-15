@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 var app = angular.module('christiannews', ['ionic', 'ngCordova', 'christiannews.controllers', 'starter.services', 'christiannews.services'])
 
-app.run(function($ionicPlatform) {
+app.run(function($ionicPlatform, $rootScope, $ionicHistory, $window) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -21,6 +21,49 @@ app.run(function($ionicPlatform) {
       StatusBar.styleDefault();
     }
   });
+
+
+  ///////////////////////////////////////////////////////////////////////////////////
+  $ionicPlatform.registerBackButtonAction(function(e){
+    if ($rootScope.backButtonPressedOnceToExit) {
+      $window.location.reload(true);
+      ionic.Platform.exitApp();
+    }
+
+    else if ($ionicHistory.backView()
+      && $ionicHistory.currentStateName() !== 'tab.home'
+      && $ionicHistory.currentStateName() !== 'tab.church'
+      && $ionicHistory.currentStateName() !== 'tab.ministries'
+      && $ionicHistory.currentStateName() !== 'tab.world'
+      && $ionicHistory.currentStateName() !== 'tab.society'
+      && $ionicHistory.currentStateName() !== 'tab.culture'
+      && $ionicHistory.currentStateName() !== 'tab.tech'
+      && $ionicHistory.currentStateName() !== 'tab.opinion') {
+
+      $ionicHistory.goBack();
+    }
+    else {
+
+      $rootScope.backButtonPressedOnceToExit = true;
+      window.plugins.toast.showWithOptions(
+        {
+          message: "再按一次退出基督教新闻",
+          duration: "short",
+          position: "bottom",
+          addPixelsY: -10  // added a negative value to move it up a bit (default 0)
+        },
+        function(a){},function(b){}
+      );
+      setTimeout(function(){
+        $rootScope.backButtonPressedOnceToExit = false;
+      },2000);
+    }
+    e.preventDefault();
+    return false;
+  },101);
+
+
+
 })
 
 app.config(function($ionicConfigProvider) {

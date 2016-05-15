@@ -1,1 +1,40 @@
 /* Empty. Add your own CSS if you like */
+
+.center-conent .scroll-content {
+  display: table !important;
+  width: 100% !important;
+  height: 60% !important;
+}
+.center-conent .scroll {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.item-avatar-square,
+.item-avatar-square .item-content,
+.item-avatar-left,
+.item-avatar-left .item-content {
+  padding-left: 72px;
+  min-height: 72px; }
+.item-avatar-square > img:first-child,
+.item-avatar-square .item-image,
+.item-avatar-square .item-content > img:first-child,
+.item-avatar-square .item-content .item-image,
+.item-avatar-left > img:first-child,
+.item-avatar-left .item-image,
+.item-avatar-left .item-content > img:first-child,
+.item-avatar-left .item-content .item-image {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  max-width: 40px;
+  max-height: 40px;
+  width: 100%;
+  height: 100%; }
+
+.item-avatar-square.item-complex,
+.item-avatar-left.item-complex,
+.item-thumbnail-left.item-complex {
+  padding-top: 0;
+  padding-left: 0; }
