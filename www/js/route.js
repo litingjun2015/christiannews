@@ -127,6 +127,16 @@ angular.module('christiannews')
           controller: 'AccountCtrl'
         }
       }
+    })
+
+    .state('tab.info', {
+      url: '/info',
+      views: {
+        'tab-info': {
+          templateUrl: 'templates/about.html',
+          controller: 'AccountCtrl'
+        }
+      }
     });
 
   // if none of the above states are matched, use this as the fallback
