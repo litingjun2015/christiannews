@@ -8,13 +8,15 @@ angular.module('christiannews.controllers')
 .controller('SearchCtrl', function($scope, $rootScope, $state, ToastService, $http, myConfig, $ionicHistory) {
 
   $rootScope.searchStartId = 0;
-  $rootScope.searchnewslist = '';
+  $rootScope.searchnewslist = [];
   $rootScope.searchnewslistNum = 0;
 
+  //if($scope.keywordslist == null || $scope.keywordslist == undefined)
   $scope.keywordslist = [];
 
   $scope.clearKeywordslist = function() {
     $scope.keywordslist = [];
+    window.localStorage.setItem('keywordslist', JSON.stringify($scope.keywordslist));
   }
 
   $scope.goBack = function() {
@@ -23,20 +25,44 @@ angular.module('christiannews.controllers')
 
   $scope.$watch('$viewContentLoaded', function() {
     $scope.doRefresh();
+    $scope.keywordslist = JSON.parse( window.localStorage.getItem('keywordslist') );
   });
 
   $scope.search = function(searchkeywords) {
 
+    $scope.keywordslist = JSON.parse( window.localStorage.getItem('keywordslist') );
+    if($scope.keywordslist == null)
+      $scope.keywordslist = [];
+
     if(searchkeywords != undefined)
     {
-      $rootScope.searchnewslist = null;
+      $rootScope.searchStartId = 0;
+      $rootScope.searchnewslist = [];
+
+      var exsit = false;
 
       $rootScope.searchkeywords = searchkeywords;
       console.log(searchkeywords);
-      $scope.keywordslist.push(searchkeywords);
+
+      console.log($scope.keywordslist);
+      if($scope.keywordslist != [] && $scope.keywordslist != null)
+      {
+        for(var i = 0;i<$scope.keywordslist.length;i++)
+        {
+          if(searchkeywords == $scope.keywordslist[i])
+            exsit = true;
+        }
+      }
+
+      if(!exsit)
+        $scope.keywordslist.push(searchkeywords);
 
       if($scope.keywordslist.length > 5)
         $scope.keywordslist.shift();
+
+      window.localStorage.setItem('keywordslist', JSON.stringify($scope.keywordslist));
+      var item = window.localStorage.getItem('keywordslist');
+      console.log(item);
 
       var url = myConfig.backend + "/searchArticlesNum/keywordslist=" + $scope.searchkeywords;
       console.log(url);
@@ -46,7 +72,7 @@ angular.module('christiannews.controllers')
           console.log(response);
           $rootScope.searchnewslistNum=response[0].num;
 
-          console.log($rootScope.searchnewslistNum);
+          //console.log($rootScope.searchnewslistNum);
 
         }).error(function(response) {
 

@@ -19,6 +19,7 @@ angular.module('christiannews')
 
     .state('tab.searchinput', {
       url: '/searchinput',
+      cache: true,
       views: {
         'tab-news': {
           templateUrl: 'templates/news-search-input.html',
@@ -28,6 +29,7 @@ angular.module('christiannews')
     })
     .state('tab.searchresult', {
       url: '/searchresult',
+      cache: false,
       views: {
         'tab-news': {
           templateUrl: 'templates/news-search-result.html',
