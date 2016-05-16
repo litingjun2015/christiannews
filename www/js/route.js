@@ -17,6 +17,25 @@ angular.module('christiannews')
 
     // Each tab has its own nav history stack:
 
+    .state('tab.searchinput', {
+      url: '/searchinput',
+      views: {
+        'tab-news': {
+          templateUrl: 'templates/news-search-input.html',
+          controller: 'SearchCtrl'
+        }
+      }
+    })
+    .state('tab.searchresult', {
+      url: '/searchresult',
+      views: {
+        'tab-news': {
+          templateUrl: 'templates/news-search-result.html',
+          controller: 'SearchCtrl'
+        }
+      }
+    })
+
     .state('tab.home', {
       url: '/home',
       views: {
@@ -94,7 +113,7 @@ angular.module('christiannews')
       url: '/dash',
       views: {
         'tab-dash': {
-          templateUrl: 'templates/tab-dash.html',
+          templateUrl: 'templates/tab-dash-delete.html',
           controller: 'DashCtrl'
         }
       }
@@ -104,7 +123,7 @@ angular.module('christiannews')
       url: '/news',
       views: {
         'tab-news': {
-          templateUrl: 'templates/tab-news.html',
+          templateUrl: 'templates/tab-news-delete.html',
           controller: 'HomeCtrl'
         }
       }

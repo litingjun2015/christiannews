@@ -4,7 +4,7 @@
 
 angular.module('christiannews.controllers')
 
-.controller('HomeCtrl', function($scope, $rootScope, ToastService, $http, myConfig) {
+.controller('HomeCtrl', function($scope, $rootScope, $state, ToastService, $http, myConfig) {
 
   $rootScope.homeStartId = 0;
   $rootScope.homenewslist = '';
@@ -12,6 +12,10 @@ angular.module('christiannews.controllers')
   $scope.$watch('$viewContentLoaded', function() {
     $scope.doRefresh();
   });
+
+  $rootScope.gosearch = function() {
+    $state.go('tab.searchinput');
+  };
 
 
   $scope.doRefresh = function() {

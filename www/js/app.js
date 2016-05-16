@@ -7,6 +7,26 @@
 // 'starter.controllers' is found in controllers.js
 var app = angular.module('christiannews', ['ionic', 'ngCordova', 'christiannews.controllers', 'starter.services', 'christiannews.services'])
 
+app.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});
+
+app.directive('ngEnter', function () {
+  return function (scope, element, attrs) {
+    element.bind("keydown keypress", function (event) {
+      if(event.which === 13) {
+        scope.$apply(function (){
+          scope.$eval(attrs.ngEnter);
+        });
+
+        event.preventDefault();
+      }
+    });
+  };
+});
+
 app.run(function($ionicPlatform, $rootScope, $ionicHistory, $window) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

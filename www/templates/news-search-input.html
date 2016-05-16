@@ -1,0 +1,29 @@
+<ion-view view-title="搜索" animation="slide-left-right" >
+
+  <ion-content>
+
+    <div class="bar bar-header item-input-inset" >
+      <label class="item-input-wrapper textbox-search">
+        <i class="icon ion-ios7-search placeholder-icon"></i>
+        <input type="search" placeholder="请输入关键词" ng-model="searchkeywords" ng-enter="search(searchkeywords)">
+      </label>
+
+      <a ng-click="goBack()"> 取消 </a>
+
+    </div>
+
+
+
+    <ion-list>
+      <ion-item class="item-remove-animate " ng-repeat="keywords in keywordslist | reverse track by $index" type="item-text-wrap" ng-click="search(keywords)">
+
+        <h2 >{{keywords}}</h2>
+
+      </ion-item>
+    </ion-list>
+
+    <div class="center-conent2" style="text-align: center;margin-top:10px">
+      <a ng-click="clearKeywordslist()" style="color:gray"> 清除历史搜索 </a>
+    </div>
+  </ion-content>
+</ion-view>

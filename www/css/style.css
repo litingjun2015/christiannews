@@ -11,6 +11,16 @@
   text-align: center;
 }
 
+.center-conent2 .scroll-content {
+  display: table !important;
+  width: 100% !important;
+  height: 60% !important;
+}
+.center-conent2 .scroll {
+  display: table-cell;
+  text-align: center;
+}
+
 .item-avatar-square,
 .item-avatar-square .item-content,
 .item-avatar-left,
