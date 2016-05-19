@@ -158,7 +158,36 @@ angular.module('christiannews')
           controller: 'AccountCtrl'
         }
       }
-    });
+    })
+
+
+    .state('taglist',{
+      cache: false,
+      url:'/taglist',
+      templateUrl: 'templates/tag/taglist.html',
+      controller: 'TaglistCtrl'
+    })
+
+    //.state('tagcontent',{
+    //  cache: false,
+    //  url:'/tagcontent/:tagId',
+    //  templateUrl: 'templates/tag/tagcontent.html',
+    //  controller: 'TagcontentCtrl'
+    //})
+
+    .state('tagcontent', {
+      cache: false,
+      url:'/tagcontent',
+      templateUrl:'templates/tag/tagcontent.html',
+      controller:'TagcontentCtrl',
+      params: {
+        'tagId': 1
+      }
+    })
+
+
+  ;
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/home');
