@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('christiannews', ['ionic', 'ngCordova', 'christiannews.controllers', 'starter.services', 'christiannews.services'])
+var app = angular.module('christiannews', ['ionic', 'ngCordova', 'christiannews.controllers', 'starter.services', 'christiannews.services', 'ion-tree-list'])
 
 app.filter('reverse', function() {
   return function(items) {

@@ -9,6 +9,32 @@ angular.module('christiannews.controllers')
   $rootScope.homeStartId = 0;
   $rootScope.homenewslist = '';
 
+
+  $scope.tasks = [
+    {
+      name: 'first task 1',
+      tree: [
+        {
+          name: 'first task 1.1'
+        }
+      ]
+    },
+    {
+      name: 'first task 2'
+    }
+  ];
+
+
+  $scope.$on('$ionTreeList:ItemClicked', function(event, item) {
+    // process 'item'
+    console.log(item);
+  });
+
+  $scope.$on('$ionTreeList:LoadComplete', function(event, items) {
+    // process 'items'
+    console.log(items);
+  });
+
   $scope.$watch('$viewContentLoaded', function() {
     $scope.doRefresh();
   });
