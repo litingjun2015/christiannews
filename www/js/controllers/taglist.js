@@ -14,75 +14,7 @@ angular.module('christiannews.controllers')
   $rootScope.homeStartId = 0;
   $rootScope.homenewslist = '';
 
-
-  $scope.tasks = [
-    {
-      name: '基督邮报',
-      tree: [
-        {
-          name: '首页',
-          id: 1
-        },
-        {
-          name: '教会',
-          id: 2
-        },
-        {
-          name: '事工',
-          id: 3
-        },
-        {
-          name: '国际',
-          id: 4
-        },
-        {
-          name: '社会',
-          id: 5
-        },
-        {
-          name: '科技&财经',
-          id: 7
-        },
-        {
-          name: '观点',
-          id: 8
-        }
-      ]
-    },
-    {
-      name: '基督邮报2',
-      tree: [
-        {
-          name: '首页',
-          id: 1
-        },
-        {
-          name: '教会',
-          id: 2
-        },
-        {
-          name: '事工',
-          id: 3
-        },
-        {
-          name: '国际',
-          id: 4
-        },
-        {
-          name: '社会',
-          id: 5
-        },
-        {
-          name: '科技&财经',
-          id: 7
-        },
-        {
-          name: '观点',
-          id: 8
-        }
-      ]
-    }
-  ];
+  $scope.tasks = [];
 
 
   $scope.$on('$ionTreeList:ItemClicked', function(event, item) {
@@ -90,8 +22,8 @@ angular.module('christiannews.controllers')
     console.log(item);
 
     if(item.depth != 1)
-      $state.go("tagcontent", { 'tagId':item.id })
-    //href="#/tab/news/{{news.id}}"
+      $state.go("tagcontent", { 'tagId':item.id, 'name':item.name })
+
   });
 
   $scope.$on('$ionTreeList:LoadComplete', function(event, items) {
@@ -110,26 +42,12 @@ angular.module('christiannews.controllers')
 
   $scope.doRefresh = function() {
 
-    var url = myConfig.backend + "/listArticles/classid=1" + "&start="+ $rootScope.homeStartId + "&fetch=" + myConfig.fetchNum;
+    var url = myConfig.backend + "/taglist";
     console.log(url);
     $http.get(url)
       .success(function (response)
       {
-        if($rootScope.homenewslist == '')
-          $rootScope.homenewslist = response;
-        else
-          $rootScope.homenewslist = response.concat($rootScope.homenewslist);
-
-        console.log($rootScope.homenewslist);
-        $rootScope.homeStartId=$rootScope.homeStartId+myConfig.fetchNum;
-
-        console.log($rootScope.homenewslist.length);
-
-        if($rootScope.homeStartId > $rootScope.homenewslist.length)
-        {
-          ToastService.showShortCenter('没有新内容了');
-          $rootScope.homeStartId = $rootScope.homenewslist.length;
-        }
+        $scope.tasks = response;
 
       }).error(function(response) {
 

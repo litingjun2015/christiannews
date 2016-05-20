@@ -8,6 +8,8 @@ angular.module('christiannews.controllers')
 
   console.log("$stateParams.tagId: " + $stateParams.tagId);
 
+  $scope.title = $stateParams.name;
+
 //  window.localStorage.clear();
 
   var item = window.localStorage.getItem($stateParams.tagId);

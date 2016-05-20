@@ -181,7 +181,8 @@ angular.module('christiannews')
       templateUrl:'templates/tag/tagcontent.html',
       controller:'TagcontentCtrl',
       params: {
-        'tagId': 1
+        'tagId': 1,
+        'name': "推荐"
       }
     })
 

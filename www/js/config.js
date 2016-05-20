@@ -1,7 +1,7 @@
 angular.module('christiannews')
  .constant('myConfig', (function () {
-   //var backend = 'http://127.0.0.1:3000';
-   var backend = 'http://www.duangwifi.cn:3000';
+   var backend = 'http://127.0.0.1:3000';
+   //var backend = 'http://www.duangwifi.cn:3000';
 
    //var backend_bizapp = '';
    var market = 'http://marketing.duanglink.com/backend/web';
