@@ -68,7 +68,7 @@ angular.module('christiannews.controllers')
 
         if($rootScope.tagStartId > $rootScope.tagnewslist.length)
         {
-          ToastService.showShortCenter('没有新内容了');
+          //ToastService.showShortCenter('没有新内容了');
           $rootScope.tagStartId = $rootScope.tagnewslist.length;
         }
 

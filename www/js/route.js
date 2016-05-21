@@ -134,7 +134,7 @@ angular.module('christiannews')
       url: '/news/:newsId',
       views: {
         'tab-news': {
-          templateUrl: 'templates/news-detail.html',
+          templateUrl: 'templates/tab-news-detail.html',
           controller: 'NewsDetailCtrl'
         }
       }
@@ -184,6 +184,12 @@ angular.module('christiannews')
         'tagId': 1,
         'name': "推荐"
       }
+    })
+
+    .state('news-detail', {
+      url: '/news/:newsId',
+      templateUrl: 'templates/tab-news-detail.html',
+      controller: 'NewsDetailCtrl'
     })
 
 
