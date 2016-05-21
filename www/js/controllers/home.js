@@ -63,7 +63,7 @@ angular.module('christiannews.controllers')
 
         if($rootScope.homeStartId > $rootScope.homenewslist.length)
         {
-          ToastService.showShortCenter('没有新内容了');
+          //ToastService.showShortCenter('没有新内容了');
           $rootScope.homeStartId = $rootScope.homenewslist.length;
         }
 
