@@ -10,6 +10,16 @@ angular.module('christiannews.controllers')
   $rootScope.homenewslist = '';
 
 
+  var item = window.localStorage.getItem('selecttags');
+  console.log(item);
+  if(item != null && item != 'null' && item != 'undefined'){
+    $rootScope.selectedtags = JSON.parse(item);
+
+  }
+  else
+    $rootScope.selectedtags = [];
+
+
   $scope.goTagcontent = function(tag) {
 
     $state.go("tab.tagcontent", { 'tagId':tag.id, 'name':tag.name })

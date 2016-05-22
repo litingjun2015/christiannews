@@ -11,6 +11,48 @@ angular.module('christiannews.controllers')
     $state.go("tab.home");
   };
 
+  $scope.goEditmytag = function() {
+    $state.go("mytagedit");
+  };
+
+  $scope.goEdittag = function() {
+    window.localStorage.setItem('selecttags', JSON.stringify($rootScope.selectedtags));
+    $state.go("tagedit");
+  };
+
+  $scope.data = {
+    showDelete: false
+  };
+
+  $scope.edit = function(item) {
+    alert('Edit Item: ' + item.id);
+  };
+  $scope.share = function(item) {
+    alert('Share Item: ' + item.id);
+  };
+
+  $scope.moveItem = function(item, fromIndex, toIndex) {
+    $rootScope.selectedtags.splice(fromIndex, 1);
+    $rootScope.selectedtags.splice(toIndex, 0, item);
+  };
+
+  $scope.onItemDelete = function(item) {
+    $rootScope.selectedtags.splice($rootScope.selectedtags.indexOf(item), 1);
+  };
+
+  $scope.items = [
+    { id: 0 },
+    { id: 1 },
+    { id: 2 },
+    { id: 3 },
+    { id: 4 },
+    { id: 5 },
+    { id: 6 },
+    { id: 7 }
+  ];
+
+  ////////////////////////////////////////////////////////////
+
   function chunk(arr, size) {
     var newArr = [];
     for (var i=0; i<arr.length; i+=size) {

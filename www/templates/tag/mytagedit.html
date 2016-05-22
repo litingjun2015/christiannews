@@ -1,0 +1,88 @@
+<html ng-app="christiannews">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Ionic List Directive</title>
+
+  <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+  <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+</head>
+
+<body ng-controller="TageditCtrl">
+
+
+
+
+
+<ion-view view-title="频道定制" animation="slide-left-right">
+
+  <!--<ion-nav-buttons side="primary">-->
+    <!--<button class="button" ng-click="doSomething()">-->
+      <!--I'm a button on the primary of the navbar!-->
+    <!--</button>-->
+  <!--</ion-nav-buttons>-->
+
+  <ion-nav-buttons side="left">
+
+    <button class="button button-icon icon ion-ios-minus-outline"
+            ng-click="data.showDelete = !data.showDelete; data.showReorder = false"></button>
+
+  </ion-nav-buttons>
+
+
+  <ion-nav-buttons side="right">
+
+    <button class="button" ng-click="data.showDelete = false; data.showReorder = !data.showReorder">
+      排序
+    </button>
+
+  </ion-nav-buttons>
+
+
+  <ion-header-bar class="bar-positive">
+
+    <h1 class="title">Ionic Delete/Option Buttons</h1>
+    <div class="buttons">
+
+    </div>
+  </ion-header-bar>
+
+
+<ion-content>
+
+  <div>
+    我的频道（您可以删除和移动频道）
+    <button class="button button-outline button-assertive button-small" ng-click="goEdittag()">完成</button>
+  </div>
+
+  <!-- The list directive is great, but be sure to also checkout the collection repeat directive when scrolling through large lists -->
+
+  <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
+
+    <ion-item ng-repeat="item in selectedtags"
+              item="item"
+              href="#/item/{{item.id}}" class="item-remove-animate">
+      {{ item.name }}
+      <ion-delete-button class="ion-minus-circled"
+                         ng-click="onItemDelete(item)">
+      </ion-delete-button>
+      <ion-option-button class="button-assertive"
+                         ng-click="edit(item)">
+        Edit
+      </ion-option-button>
+      <ion-option-button class="button-calm"
+                         ng-click="share(item)">
+        Share
+      </ion-option-button>
+      <ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
+
+</ion-view>
+
+
+</body>
+</html>

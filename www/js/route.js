@@ -208,6 +208,13 @@ angular.module('christiannews')
       controller: 'TageditCtrl'
     })
 
+    .state('mytagedit',{
+      cache: false,
+      url:'/mytagedit',
+      templateUrl: 'templates/tag/mytagedit.html',
+      controller: 'TageditCtrl'
+    })
+
     .state('news-detail', {
       url: '/news/:newsId',
       templateUrl: 'templates/tab-news-detail.html',
