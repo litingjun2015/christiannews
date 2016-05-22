@@ -4,7 +4,7 @@
 
 angular.module('christiannews.controllers')
 
-.controller('HomeCtrl', function($scope, $rootScope, $state, ToastService, $http, myConfig) {
+.controller('HomeCtrl', function($scope, $rootScope, $state, ToastService, $http, myConfig, $location) {
 
   $rootScope.homeStartId = 0;
   $rootScope.homenewslist = '';
@@ -22,6 +22,7 @@ angular.module('christiannews.controllers')
 
   $scope.goTagcontent = function(tag) {
 
+    console.log($location.path());
     $state.go("tab.tagcontent", { 'tagId':tag.id, 'name':tag.name })
   };
 

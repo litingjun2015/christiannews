@@ -11,6 +11,14 @@ angular.module('christiannews.controllers')
   $scope.title = $stateParams.name;
 
 
+  $scope.navClass = function(id) {
+
+    console.log("id: "+ id);
+    console.log("$stateParams.tagId: " + $stateParams.tagId);
+    return $stateParams.tagId == id ? 'active':'';
+  };
+
+
   $scope.goTagcontent = function(tag) {
 
     $state.go("tab.tagcontent", { 'tagId':tag.id, 'name':tag.name })
@@ -34,6 +42,16 @@ angular.module('christiannews.controllers')
   }
   else
     $rootScope.tagStartId = 0;
+
+
+  var item = window.localStorage.getItem('selecttags');
+  console.log(item);
+  if(item != null && item != 'null' && item != 'undefined'){
+    $rootScope.selectedtags = JSON.parse(item);
+
+  }
+  else
+    $rootScope.selectedtags = [];
 
 
   $scope.$on('$ionTreeList:ItemClicked', function(event, item) {

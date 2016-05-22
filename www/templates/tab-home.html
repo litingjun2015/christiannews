@@ -14,27 +14,52 @@
 
   <ion-content>
 
+
+
     <table border="1">
       <tr>
         <th style="margin-left:1%; margin-top:1%; width: 300px; height: 33px">
           <div>
-            <ion-scroll zooming="true" direction="xy" style="margin-left:0px; margin-top:1%; width: 300px; height: 33px">
-              <div style="width: 1000px; margin-left:2%;" align="left">
-                <a style="background-color: white;"  href="#/tab/home">首页</a>
-                <!--<tr class="row" ng-repeat="tag in selectedtags" style="float:left">-->
-                  <!--<a style="color: gray" ng-click="goTagcontent(tag)">{{tag.name}}</a>-->
-                <!--</tr>-->
+            <ion-scroll zooming="true" direction="xy" style="margin-left:0px; margin-top:1%; width: 300px; height: 63px">
 
+              <ul style="width: 1200px; margin-left:2%;">
+                <li><a class="active" href="#/tab/home">首页</a></li>
                 <span ng-repeat="tag in selectedtags" >
-                  <a style="color: gray" ng-click="goTagcontent(tag)">{{tag.name}}</a>
+                  <li><a ng-click="goTagcontent(tag)">{{tag.name}}</a></li>
                 </span>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li style="float:right"><a href="#about">About</a></li>
+              </ul>
 
-                <a style="color: gray" href="#/taglist">更多</a>
-              </div>
+              <!--<div style="width: 1000px; margin-left:2%;" align="left">-->
+                <!--<a style="background-color: white;"  href="#/tab/home">首页</a>-->
+
+                <!--<span ng-repeat="tag in selectedtags" >-->
+                  <!--<a style="color: gray" ng-click="goTagcontent(tag)">{{tag.name}}</a>-->
+                <!--</span>-->
+
+                <!--<a style="color: gray" href="#/taglist">更多</a>-->
+              <!--</div>-->
             </ion-scroll>
+
           </div>
         </th>
-        <th ><a href="#/tagedit">+</a></th>
+
+        <th style="margin-left:1%; margin-top:1%; width: 300px; height: 33px">
+
+
+            <div>
+              <ion-scroll zooming="true" direction="xy" style="margin-left:0px; margin-top:1%; width: 60px; height: 63px">
+
+                <ul style="width: 40px; margin-top:0%;">
+                  <li><a href="#/tagedit">+</a></li>
+                </ul>
+              </ion-scroll>
+
+            </div>
+
+
       </tr>
       </tr>
     </table>

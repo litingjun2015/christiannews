@@ -8,7 +8,7 @@ angular.module('christiannews.controllers')
 
   $scope.myGoBack = function() {
     console.log("$ionicHistory.goBack()");
-    $state.go("tab.home");
+    $state.go("tab.tagcontent");
   };
 
   $rootScope.homeStartId = 0;
