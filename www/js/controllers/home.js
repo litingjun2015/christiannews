@@ -10,19 +10,11 @@ angular.module('christiannews.controllers')
   $rootScope.homenewslist = '';
 
 
-  $scope.tasks = [
-    {
-      name: 'first task 1',
-      tree: [
-        {
-          name: 'first task 1.1'
-        }
-      ]
-    },
-    {
-      name: 'first task 2'
-    }
-  ];
+  $scope.goTagcontent = function(tag) {
+
+    $state.go("tab.tagcontent", { 'tagId':tag.id, 'name':tag.name })
+  };
+
 
 
   $scope.$on('$ionTreeList:ItemClicked', function(event, item) {

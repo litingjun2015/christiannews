@@ -1,4 +1,4 @@
-<ion-view view-title="基督教新闻" animation="slide-left-right">
+<ion-view view-title="{{title}}频道" animation="slide-left-right">
   <!--<ion-header-bar class="bar bar-subheader" animation="slide-left-right">-->
   <!--<h7 class="title">-->
   <!--<a href="#/tab/home">首页</a>-->
@@ -22,7 +22,7 @@
               <div style="width: {{selectedtags.length * 100}}px;margin-left:2%;" align="left">
                 <a style="background-color: white;"  href="#/tab/home">首页</a>
                 <!--<tr class="row" ng-repeat="tag in selectedtags" style="float:left">-->
-                  <!--<a style="color: gray" ng-click="goTagcontent(tag)">{{tag.name}}</a>-->
+                <!--<a style="color: gray" ng-click="goTagcontent(tag)">{{tag.name}}</a>-->
                 <!--</tr>-->
 
                 <span ng-repeat="tag in selectedtags" >
@@ -49,10 +49,6 @@
 
 
 
-    <!--<ion-tree-list items="tasks" collapsed="true"></ion-tree-list>-->
-
-
-
     <ion-refresher
       pulling-text="下拉更新..."
       on-refresh="doRefresh()">
@@ -69,7 +65,7 @@
     </ion-nav-buttons>
 
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar-square item-icon-right" ng-repeat="news in homenewslist" type="item-text-wrap" href="#/tab/news/{{news.id}}">
+      <ion-item class="item-remove-animate item-avatar-square item-icon-right" ng-repeat="news in tagnewslist track by $index" type="item-text-wrap" href="#/news/{{news.id}}">
         <img ng-src="{{news.thumb}}">
         <h2 >{{news.title}}</h2>
         <p>{{news.author}}</p>

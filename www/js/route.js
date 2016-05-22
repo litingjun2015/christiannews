@@ -140,6 +140,21 @@ angular.module('christiannews')
       }
     })
 
+    .state('tab.tagcontent', {
+      cache: false,
+      url:'/tagcontent',
+      views: {
+        'tab-news': {
+          templateUrl: 'templates/tab-tagcontent.html',
+          controller: 'TagcontentCtrl'
+        },
+      },
+      params: {
+        'tagId': 1,
+        'name': "推荐"
+      }
+    })
+
     .state('tab.account', {
       url: '/account',
       views: {
@@ -184,6 +199,13 @@ angular.module('christiannews')
         'tagId': 1,
         'name': "推荐"
       }
+    })
+
+    .state('tagedit',{
+      cache: false,
+      url:'/tagedit',
+      templateUrl: 'templates/tag/tagedit.html',
+      controller: 'TageditCtrl'
     })
 
     .state('news-detail', {

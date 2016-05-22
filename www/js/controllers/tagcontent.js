@@ -10,6 +10,12 @@ angular.module('christiannews.controllers')
 
   $scope.title = $stateParams.name;
 
+
+  $scope.goTagcontent = function(tag) {
+
+    $state.go("tab.tagcontent", { 'tagId':tag.id, 'name':tag.name })
+  };
+
 //  window.localStorage.clear();
 
   var item = window.localStorage.getItem($stateParams.tagId);
