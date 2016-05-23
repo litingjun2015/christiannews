@@ -27,7 +27,7 @@ app.directive('ngEnter', function () {
   };
 });
 
-app.run(function($ionicPlatform, $rootScope, $ionicHistory, $window) {
+app.run(function($ionicPlatform, $rootScope, $ionicHistory, $window, UtilityService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -47,6 +47,7 @@ app.run(function($ionicPlatform, $rootScope, $ionicHistory, $window) {
   $ionicPlatform.registerBackButtonAction(function(e){
     if ($rootScope.backButtonPressedOnceToExit) {
       $window.location.reload(true);
+      UtilityService.clearcache();
       ionic.Platform.exitApp();
     }
 

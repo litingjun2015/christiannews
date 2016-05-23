@@ -14,11 +14,12 @@
 
   <ion-content>
 
+    <!--width: 320px; height: 33px-->
     <table border="1">
       <tr>
-        <th style="margin-left:0%; margin-top:1%; width: 300px; height: 33px">
+        <th style="margin-left:0%; margin-top:1%; ">
           <div >
-            <ion-scroll zooming="true" direction="xy" style="margin-left:0px; margin-top:1%; width: 300px; height: 63px" delegate-handle="small">
+            <ion-scroll zooming="true" direction="xy" style="margin-left:0px; margin-top:1%; width: 320px; height: 43px" delegate-handle="small">
 
               <ul style="width: 1200px; margin-left:0%;">
                 <span ng-repeat="tag in selectedtags" >
@@ -45,7 +46,7 @@
 
 
           <div>
-            <ion-scroll zooming="true" direction="xy" style="margin-left:0px; margin-top:1%; width: 60px; height: 63px">
+            <ion-scroll zooming="true" direction="xy" style="margin-left:0px; margin-top:1%; width: 60px; height: 43px">
 
               <ul style="width: 40px; margin-top:0%;">
                 <li><a href="#/tagedit">+</a></li>
@@ -85,7 +86,7 @@
     </ion-nav-buttons>
 
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar-square item-icon-right" ng-repeat="news in tagnewslist track by $index" type="item-text-wrap" href="#/news/{{news.id}}">
+      <ion-item class="item-remove-animate item-avatar-square item-icon-right" ng-repeat="news in tagnewslist track by $index" type="item-text-wrap" href="#/tab/news/{{news.id}}">
         <img ng-src="{{news.thumb}}">
         <h2 >{{news.title}}</h2>
         <p>{{news.author}}</p>

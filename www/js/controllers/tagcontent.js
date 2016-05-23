@@ -4,7 +4,7 @@
 
 angular.module('christiannews.controllers')
 
-.controller('TagcontentCtrl', function($scope, $rootScope, $state, ToastService, $http, myConfig, $stateParams, $ionicScrollDelegate) {
+.controller('TagcontentCtrl', function($scope, $rootScope, $state, ToastService, $http, myConfig, $stateParams, $ionicScrollDelegate, UtilityService) {
 
   console.log("$stateParams.tagId: " + $stateParams.tagId);
 
@@ -46,6 +46,8 @@ angular.module('christiannews.controllers')
 
   $scope.Init = function() {
 
+
+
     var item = window.localStorage.getItem('selecttags');
     console.log(item);
     if(item != null && item != 'null' && item != 'undefined'){
@@ -54,6 +56,7 @@ angular.module('christiannews.controllers')
     else
       $rootScope.selectedtags = [];
 
+    //UtilityService.clearcache();
 
     var item = window.localStorage.getItem($stateParams.tagId);
     if(item != null && item != 'null'){
