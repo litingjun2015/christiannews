@@ -10,7 +10,7 @@
             <ion-scroll zooming="true" direction="xy" style="margin-left:0px; margin-top:1%; width: 320px; height: 43px" delegate-handle="small">
 
               <ul style="width: 1200px; margin-left:0%;">
-                <li><a ng-click="goRecommend()" ng-class="active">推荐</a></li>
+                <li><a ng-click="goRecommend()" class="active">推荐</a></li>
                 <span ng-repeat="tag in selectedtags" >
                   <li><a ng-click="goTagcontent(tag)" ng-class="navClass('{{tag.id}}')">{{tag.name}}</a></li>
                 </span>
