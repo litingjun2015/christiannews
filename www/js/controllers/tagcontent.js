@@ -13,8 +13,8 @@ angular.module('christiannews.controllers')
 
   $scope.navClass = function(id) {
 
-    console.log("id: "+ id);
-    console.log("$stateParams.tagId: " + $stateParams.tagId);
+    //console.log("id: "+ id);
+    //console.log("$stateParams.tagId: " + $stateParams.tagId);
     return $stateParams.tagId == id ? 'active':'';
   };
 

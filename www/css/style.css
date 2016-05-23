@@ -1,5 +1,18 @@
 /* Empty. Add your own CSS if you like */
 
+.item .item-content {
+  background-color: transparent !important;
+}
+
+.button-bar.custom-width-bar .button:first-child {
+  width: 25%;
+  min-width: 25%;
+}
+
+.mycol {
+
+}
+
 ul {
   list-style-type: none;
   margin: 0;

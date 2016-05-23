@@ -1,4 +1,4 @@
-<ion-view view-title="频道" hide-back-button="true" hide-nav-bar="true">
+<ion-view view-title="频道定制" hide-back-button="true" hide-nav-bar="true">
 
   <div class="bar bar-header bar-stable">
     <button class="button  icon ion-close-round icon-right" ng-click="myGoBack()" ng-show="false"></button>
@@ -7,24 +7,27 @@
 
   <ion-content class="has-header">
 
-    <div>
-      我的频道
-      <button class="button button-outline button-assertive button-small" ng-click="goEditmytag()">编辑</button>
+    <div class="item item-divider">
+      <p style="font-size:12px">我的频道
+        <button class="button button-outline button-assertive button-small" ng-click="goEditmytag()" style="margin-left: 70%">编辑</button>
+      </p>
     </div>
 
-    <div class="row" ng-repeat="rows in chunkedData">
-      <div class="" ng-repeat="item in rows">
-        <button class="button button-bar button-light ">{{item.name}}</button>
+    <div class="row " ng-repeat="rows in chunkedData">
+      <div class="col-25 button-bar " ng-repeat="item in rows">
+        <button class="button button-small button-outline button-dark">{{item.name}}</button>
       </div>
     </div>
 
-    <div>
-      频道推荐
+    <div class="item item-divider">
+      <p style="font-size:12px">
+        频道推荐（点击下面频道添加到我的频道）
+      </p>
     </div>
 
     <div class="row" ng-repeat="rows in chunkedDatarecommendtags">
-      <div class="span4" ng-repeat="item in rows">
-        <button class="button button-bar button-light " ng-click="addTag(item)">{{item.name}}</button>
+      <div class="col-25 button-bar " ng-repeat="item in rows">
+        <button class="button button-small button-outline button-dark " ng-click="addTag(item)">{{item.name}}</button>
       </div>
     </div>
 

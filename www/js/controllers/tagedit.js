@@ -21,7 +21,8 @@ angular.module('christiannews.controllers')
   };
 
   $scope.data = {
-    showDelete: false
+    showDelete: true,
+    showReorder: true
   };
 
   $scope.edit = function(item) {
