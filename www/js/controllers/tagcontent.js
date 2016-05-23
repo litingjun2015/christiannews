@@ -4,7 +4,7 @@
 
 angular.module('christiannews.controllers')
 
-.controller('TagcontentCtrl', function($scope, $rootScope, $state, ToastService, $http, myConfig, $stateParams) {
+.controller('TagcontentCtrl', function($scope, $rootScope, $state, ToastService, $http, myConfig, $stateParams, $ionicScrollDelegate) {
 
   console.log("$stateParams.tagId: " + $stateParams.tagId);
 
@@ -20,8 +20,10 @@ angular.module('christiannews.controllers')
 
 
   $scope.goTagcontent = function(tag) {
-
-    $state.go("tab.tagcontent", { 'tagId':tag.id, 'name':tag.name })
+    var pos = $ionicScrollDelegate.$getByHandle('small').getScrollPosition();
+    console.log(pos);
+    console.log(pos.left);
+    $state.go("tab.tagcontent", { 'tagId':tag.id, 'name':tag.name, 'positionLeft': pos.left})
   };
 
 //  window.localStorage.clear();
@@ -66,6 +68,16 @@ angular.module('christiannews.controllers')
 
   $scope.$watch('$viewContentLoaded', function() {
     $scope.doRefresh();
+
+    console.log($stateParams.tagId);
+    var left = 0;
+    console.log($stateParams.positionLeft);
+    if($stateParams.positionLeft == undefined)
+      left = 0;
+    else
+      left = $stateParams.positionLeft;
+    console.log(left);
+    $ionicScrollDelegate.$getByHandle('small').scrollTo(left,0,true);
   });
 
   $rootScope.gosearch = function() {

@@ -151,7 +151,8 @@ angular.module('christiannews')
       },
       params: {
         'tagId': 1,
-        'name': "推荐"
+        'name': "推荐",
+        'positionLeft': 0
       }
     })
 
