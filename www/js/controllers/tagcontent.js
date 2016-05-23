@@ -94,7 +94,7 @@ angular.module('christiannews.controllers')
           $rootScope.tagArcticleNum = 0;
         console.log("$rootScope.tagArcticleNum：" + $rootScope.tagArcticleNum);
 
-        if(response[0].count > $rootScope.tagArcticleNum)
+        if(response != '' && response[0].count != $rootScope.tagArcticleNum)
         {
           var msg = '发现'+(response[0].count-$rootScope.tagArcticleNum)+'条更新';
           ToastService.showShortCenter(msg);
