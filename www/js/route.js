@@ -140,6 +140,17 @@ angular.module('christiannews')
       }
     })
 
+    .state('tab.recommend', {
+      cache: false,
+      url:'/recommend',
+      views: {
+        'tab-news': {
+          templateUrl: 'templates/tab-recommend.html',
+          controller: 'RecommendCtrl'
+        },
+      },
+    })
+
     .state('tab.tagcontent', {
       cache: false,
       url:'/tagcontent',
@@ -227,7 +238,7 @@ angular.module('christiannews')
 
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/tagcontent');
+  $urlRouterProvider.otherwise('/tab/recommend');
 
 
   });

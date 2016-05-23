@@ -4,9 +4,9 @@
 
 angular.module('christiannews.controllers')
 
-.controller('TagcontentCtrl', function($scope, $rootScope, $state, ToastService, $http, myConfig, $stateParams, $ionicScrollDelegate, UtilityService) {
+.controller('RecommendCtrl', function($scope, $rootScope, $state, ToastService, $http, myConfig, $stateParams, $ionicScrollDelegate, UtilityService) {
 
-  console.log("$stateParams.tagId: " + $stateParams.tagId);
+  console.log("recommendtag: " + "recommendtag");
 
   $scope.title = $stateParams.name;
 
@@ -65,14 +65,14 @@ angular.module('christiannews.controllers')
 
     //UtilityService.clearcache();
 
-    var item = window.localStorage.getItem($stateParams.tagId);
+    var item = window.localStorage.getItem("recommendtag");
     if(item != null && item != 'null'){
       $rootScope.tagnewslist = JSON.parse(item);
     }
     else
       $rootScope.tagnewslist = '';
 
-    var item = window.localStorage.getItem("tagStartId"+$stateParams.tagId.toString());
+    var item = window.localStorage.getItem("tagStartId"+"recommendtag".toString());
     if(item != null && item != 'null'){
       $rootScope.tagStartId = parseInt(item, 10);
     }
@@ -125,12 +125,12 @@ angular.module('christiannews.controllers')
 
   $scope.$watch('$viewContentLoaded', function() {
 
-    if( $scope.checkUpdate() )
-    {
-      window.localStorage.setItem($stateParams.tagId, null);
-      window.localStorage.setItem("tagStartId"+$stateParams.tagId.toString(), "0"); //tagStartId
-      window.localStorage.setItem("ArticleNum"+$stateParams.tagId.toString(), "0");//tagArcticleNum
-    }
+    //if( $scope.checkUpdate() )
+    //{
+    //  window.localStorage.setItem($stateParams.tagId, null);
+    //  window.localStorage.setItem("tagStartId"+$stateParams.tagId.toString(), "0"); //tagStartId
+    //  window.localStorage.setItem("ArticleNum"+$stateParams.tagId.toString(), "0");//tagArcticleNum
+    //}
 
     $scope.Init();
 
@@ -156,7 +156,7 @@ angular.module('christiannews.controllers')
 
   $scope.doRefresh = function() {
 
-    var url = myConfig.backend + "/listArticles/classid=" + $stateParams.tagId + "&start="+ $rootScope.tagStartId + "&fetch=" + myConfig.fetchNum;
+    var url = myConfig.backend + "/listLatestArticles/start="+ $rootScope.tagStartId + "&fetch=" + myConfig.fetchNum;
     console.log(url);
     $http.get(url)
       .success(function (response)
@@ -177,8 +177,8 @@ angular.module('christiannews.controllers')
           $rootScope.tagStartId = $rootScope.tagnewslist.length;
         }
 
-        window.localStorage.setItem($stateParams.tagId, JSON.stringify($rootScope.tagnewslist));
-        window.localStorage.setItem("tagStartId"+$stateParams.tagId.toString(), $rootScope.tagStartId.toString());
+        window.localStorage.setItem("recommendtag", JSON.stringify($rootScope.tagnewslist));
+        window.localStorage.setItem("tagStartId"+"recommendtag".toString(), $rootScope.tagStartId.toString());
 
       }).error(function(response) {
 

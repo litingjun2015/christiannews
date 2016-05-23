@@ -4,9 +4,9 @@ angular.module('christiannews')
    //var backend = 'http://192.168.31.207:3000';
 
    //office
-   //var backend = 'http://192.168.31.194:3000';
+   var backend = 'http://192.168.31.194:3000';
 
-   var backend = 'http://www.duangwifi.cn:3000';
+   //var backend = 'http://www.duangwifi.cn:3000';
 
    //var backend_bizapp = '';
    var market = 'http://marketing.duanglink.com/backend/web';
