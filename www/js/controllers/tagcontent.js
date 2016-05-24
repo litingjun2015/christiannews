@@ -9,6 +9,7 @@ angular.module('christiannews.controllers')
   console.log("$stateParams.tagId: " + $stateParams.tagId);
 
   $scope.title = $stateParams.name;
+  $scope.update_status = false;
 
 
   $scope.navClass = function(id) {
@@ -83,8 +84,6 @@ angular.module('christiannews.controllers')
 
   $scope.checkUpdate = function() {
 
-    var ret = false;
-
     var url = myConfig.backend + "/getTagArticleNum/tagid=" + $stateParams.tagId;
     console.log(url);
     $http.get(url)
@@ -107,7 +106,7 @@ angular.module('christiannews.controllers')
           ToastService.showShortCenter(msg);
           $rootScope.tagArcticleNum = response[0].count;
 
-          ret = true;
+          $scope.update_status = true;
         }
         window.localStorage.setItem("ArticleNum"+$stateParams.tagId.toString(), $rootScope.tagArcticleNum.toString());
 
@@ -119,34 +118,44 @@ angular.module('christiannews.controllers')
       //$rootScope.tagStartId = $rootScope.tagStartId-myConfig.fetchNum;
 
     });
-
-    return ret;
   }
 
   $scope.$watch('$viewContentLoaded', function() {
 
-    if( $scope.checkUpdate() )
-    {
-      window.localStorage.setItem($stateParams.tagId, null);
-      window.localStorage.setItem("tagStartId"+$stateParams.tagId.toString(), "0"); //tagStartId
-      window.localStorage.setItem("ArticleNum"+$stateParams.tagId.toString(), "0");//tagArcticleNum
-    }
+    $scope.checkUpdate();
 
-    $scope.Init();
+    setTimeout(function() {
+      //$cordovaSplashscreen.hide();
+      //console.log($scope.update_status);
 
-    if($rootScope.selectedtags.length == 0)
-      $scope.loadDefault();
+      if( $scope.update_status )
+      {
+        console.log("reset tagId: "+$stateParams.tagId);
+        window.localStorage.setItem($stateParams.tagId, null);
+        window.localStorage.setItem("tagStartId"+$stateParams.tagId.toString(), "0"); //tagStartId
+        //window.localStorage.setItem("ArticleNum"+$stateParams.tagId.toString(), "0");//tagArcticleNum
+      }
 
-    var left = 0;
-    if($stateParams.positionLeft == undefined)
-      left = 0;
-    else
-      left = $stateParams.positionLeft;
-    $ionicScrollDelegate.$getByHandle('small').scrollTo(left,0,true);
+      $scope.Init();
+
+      if($rootScope.selectedtags.length == 0)
+        $scope.loadDefault();
+
+      var left = 0;
+      if($stateParams.positionLeft == undefined)
+        left = 0;
+      else
+        left = $stateParams.positionLeft;
+      $ionicScrollDelegate.$getByHandle('small').scrollTo(left,0,true);
 
 
-    if($rootScope.tagnewslist.length == 0)
-      $scope.doRefresh();
+      if($rootScope.tagnewslist.length == 0)
+        $scope.doRefresh();
+
+
+    }, 500);
+
+
   });
 
   $rootScope.gosearch = function() {
