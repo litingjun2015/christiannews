@@ -85,28 +85,6 @@ angular.module('christiannews.controllers')
 //
 //})
 
-.controller('NewsDetailCtrl', function($scope, $stateParams, Chats, $http, myConfig, ToastService) {
-
-  //$scope.origurl = "http://192.168.31.207:3000/article/" + $stateParams.newsId;
-  //$scope.url = $sce.trustAsResourceUrl($scope.origurl);
-
-
-  var url= myConfig.backend + "/article/" + $stateParams.newsId;
-  console.log(url);
-  $http.get(url)
-    .success(function (response)
-    {
-      $scope.news = response;
-      console.log($scope.news);
-
-    }).error(function(response) {
-
-    ToastService.showShortCenter('获取数据失败');
-
-  });
-
-
-})
 
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {

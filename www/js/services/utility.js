@@ -11,6 +11,9 @@ angular.module('christiannews.services')
           window.localStorage.setItem("tagStartId"+$rootScope.selectedtags[i].id.toString(), "0"); //tagStartId
           window.localStorage.setItem("ArticleNum"+$rootScope.selectedtags[i].id.toString(), "0");//tagArcticleNum
         }
+
+        window.localStorage.setItem("recommendtag", null);
+        window.localStorage.setItem("tagStartId"+"recommendtag", "0"); //tagStartId
       },
 
 

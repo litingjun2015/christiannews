@@ -9,6 +9,7 @@ angular.module('christiannews.controllers')
   console.log("recommendtag: " + "recommendtag");
 
   $scope.title = $stateParams.name;
+  $scope.update_status = false;
 
 
   $scope.navClass = function(id) {
@@ -67,32 +68,30 @@ angular.module('christiannews.controllers')
 
     var item = window.localStorage.getItem("recommendtag");
     if(item != null && item != 'null'){
-      $rootScope.tagnewslist = JSON.parse(item);
+      $rootScope.recommendnewslist = JSON.parse(item);
     }
     else
-      $rootScope.tagnewslist = '';
+      $rootScope.recommendnewslist = '';
 
     var item = window.localStorage.getItem("tagStartId"+"recommendtag".toString());
     if(item != null && item != 'null'){
-      $rootScope.tagStartId = parseInt(item, 10);
+      $rootScope.recommendStartId = parseInt(item, 10);
     }
     else
-      $rootScope.tagStartId = 0;
+      $rootScope.recommendStartId = 0;
 
   }
 
   $scope.checkUpdate = function() {
 
-    var ret = false;
-
-    var url = myConfig.backend + "/getTagArticleNum/tagid=" + $stateParams.tagId;
+    var url = myConfig.backend + "/getArticleNum";
     console.log(url);
     $http.get(url)
       .success(function (response)
       {
         console.log(response);
 
-        var item = window.localStorage.getItem("ArticleNum"+$stateParams.tagId.toString());
+        var item = window.localStorage.getItem("ArticleNum"+"recommendtag".toString());
         console.log(item);
         if(item != null && item != 'null'){
           $rootScope.tagArcticleNum = parseInt(item, 10);
@@ -107,9 +106,9 @@ angular.module('christiannews.controllers')
           ToastService.showShortCenter(msg);
           $rootScope.tagArcticleNum = response[0].count;
 
-          ret = true;
+          $scope.update_status = true;
         }
-        window.localStorage.setItem("ArticleNum"+$stateParams.tagId.toString(), $rootScope.tagArcticleNum.toString());
+        window.localStorage.setItem("ArticleNum"+"recommendtag".toString(), $rootScope.tagArcticleNum.toString());
 
 
 
@@ -119,34 +118,42 @@ angular.module('christiannews.controllers')
       //$rootScope.tagStartId = $rootScope.tagStartId-myConfig.fetchNum;
 
     });
-
-    return ret;
   }
 
   $scope.$watch('$viewContentLoaded', function() {
 
-    //if( $scope.checkUpdate() )
-    //{
-    //  window.localStorage.setItem($stateParams.tagId, null);
-    //  window.localStorage.setItem("tagStartId"+$stateParams.tagId.toString(), "0"); //tagStartId
-    //  window.localStorage.setItem("ArticleNum"+$stateParams.tagId.toString(), "0");//tagArcticleNum
-    //}
+    $scope.checkUpdate();
 
-    $scope.Init();
+    setTimeout(function() {
+      //$cordovaSplashscreen.hide();
+      //console.log($scope.update_status);
 
-    if($rootScope.selectedtags.length == 0)
-      $scope.loadDefault();
+      if( $scope.update_status )
+      {
+        console.log("reset recommendtag ");
+        window.localStorage.setItem("recommendtag", null);
+        window.localStorage.setItem("tagStartId"+"recommendtag", "0"); //tagStartId
+        //window.localStorage.setItem("ArticleNum"+$stateParams.tagId.toString(), "0");//tagArcticleNum
+      }
 
-    var left = 0;
-    if($stateParams.positionLeft == undefined)
-      left = 0;
-    else
-      left = $stateParams.positionLeft;
-    $ionicScrollDelegate.$getByHandle('small').scrollTo(left,0,true);
+      $scope.Init();
+
+      if($rootScope.selectedtags.length == 0)
+        $scope.loadDefault();
+
+      var left = 0;
+      if($stateParams.positionLeft == undefined)
+        left = 0;
+      else
+        left = $stateParams.positionLeft;
+      $ionicScrollDelegate.$getByHandle('small').scrollTo(left,0,true);
 
 
-    if($rootScope.tagnewslist.length == 0)
-      $scope.doRefresh();
+      if($rootScope.recommendnewslist.length == 0)
+        $scope.doRefresh();
+
+
+    }, 500);
   });
 
   $rootScope.gosearch = function() {
@@ -156,34 +163,34 @@ angular.module('christiannews.controllers')
 
   $scope.doRefresh = function() {
 
-    var url = myConfig.backend + "/listLatestArticles/start="+ $rootScope.tagStartId + "&fetch=" + myConfig.fetchNum;
+    var url = myConfig.backend + "/listLatestArticles/start="+ $rootScope.recommendStartId + "&fetch=" + myConfig.fetchNum;
     console.log(url);
     $http.get(url)
       .success(function (response)
       {
-        if($rootScope.tagnewslist == '')
-          $rootScope.tagnewslist = response;
+        if($rootScope.recommendnewslist == '')
+          $rootScope.recommendnewslist = response;
         else
-          $rootScope.tagnewslist = response.concat($rootScope.tagnewslist);
+          $rootScope.recommendnewslist = response.concat($rootScope.recommendnewslist);
 
-        console.log($rootScope.tagnewslist);
-        $rootScope.tagStartId=$rootScope.tagStartId+myConfig.fetchNum;
+        console.log($rootScope.recommendnewslist);
+        $rootScope.recommendStartId=$rootScope.recommendStartId+myConfig.fetchNum;
 
-        //console.log($rootScope.tagnewslist.length);
+        //console.log($rootScope.recommendnewslist.length);
 
-        if($rootScope.tagStartId > $rootScope.tagnewslist.length)
+        if($rootScope.recommendStartId > $rootScope.recommendnewslist.length)
         {
           //ToastService.showShortCenter('没有新内容了');
-          $rootScope.tagStartId = $rootScope.tagnewslist.length;
+          $rootScope.recommendStartId = $rootScope.recommendnewslist.length;
         }
 
-        window.localStorage.setItem("recommendtag", JSON.stringify($rootScope.tagnewslist));
-        window.localStorage.setItem("tagStartId"+"recommendtag".toString(), $rootScope.tagStartId.toString());
+        window.localStorage.setItem("recommendtag", JSON.stringify($rootScope.recommendnewslist));
+        window.localStorage.setItem("tagStartId"+"recommendtag".toString(), $rootScope.recommendStartId.toString());
 
       }).error(function(response) {
 
       ToastService.showShortCenter('获取数据失败');
-      //$rootScope.tagStartId = $rootScope.tagStartId-myConfig.fetchNum;
+      //$rootScope.recommendStartId = $rootScope.recommendStartId-myConfig.fetchNum;
 
     });
 

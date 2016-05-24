@@ -7,16 +7,21 @@
 <ion-view view-title="{{news.name}}">
   <ion-content class="padding">
 
-    <!--<div class="item item-divider item-text-wrap">-->
-      <!--{{news.title}}-->
-    <!--</div>-->
-    <!--<div class="item item-divider" style="font-size:14px;font-weight:normal;text-align:right">-->
-      <!--&lt;!&ndash;{{news.created_time * 1000 | date:'MM-dd HH:mm' }} - By: {{news.author}}&ndash;&gt;-->
-      <!--{{news.time_text}} - By: {{news.author}}-->
-    <!--</div>-->
+    <div class="item item-divider item-text-wrap">
+      {{news.title}}
+    </div>
+    <div class="item item-divider" style="font-size:14px;font-weight:normal;text-align:right">
+      <!--{{news.created_time * 1000 | date:'MM-dd HH:mm' }} - By: {{news.author}}-->
+      {{news.time_text}} - 作者: {{news.author}}
+    </div>
+    <div class="item item-divider" style="font-size:14px;font-weight:normal;text-align:right">
+      频道：{{tagname}}
+    </div>
     <!--<div class="item item-text-wrap" ng-bind-html="news.content"></div>-->
 
+    <div style="margin-top: 7%">
     <span class="large" ng-bind-html="news.content"></span>
+    </div>
 
   </ion-content>
 </ion-view>
