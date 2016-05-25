@@ -36,6 +36,20 @@ angular.module('christiannews.controllers')
 
     };
 
+    $scope.wechatlogin = function() {
+
+      var scope = "snsapi_userinfo",
+        state = "_" + (+new Date());
+      Wechat.auth(scope, state, function (response) {
+        // you may use response.code to get the access token.
+        alert(JSON.stringify(response));
+        console.log(JSON.stringify(response));
+      }, function (reason) {
+        alert("Failed: " + reason);
+      });
+
+    }
+
     $scope.collect = function() {
 
       if($scope.collected)
