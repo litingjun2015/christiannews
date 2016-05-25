@@ -4,13 +4,19 @@
 
 angular.module('christiannews.controllers')
 
-.controller('TagcontentCtrl', function($scope, $rootScope, $state, ToastService, $http, myConfig, $stateParams, $ionicScrollDelegate, UtilityService) {
+.controller('TagcontentCtrl', function(UtilityService, $scope, $rootScope, $state, ToastService, $http, myConfig, $stateParams, $ionicScrollDelegate, UtilityService) {
 
   console.log("$stateParams.tagId: " + $stateParams.tagId);
 
   $scope.title = $stateParams.name;
   $scope.update_status = false;
 
+
+  $scope.goArticle = function(id) {
+
+    console.log(UtilityService.getTagPosition());
+    $state.go("news-detail", { 'newsId':id})
+  };
 
   $scope.navClass = function(id) {
 
@@ -30,6 +36,7 @@ angular.module('christiannews.controllers')
     var pos = $ionicScrollDelegate.$getByHandle('small').getScrollPosition();
     //console.log(pos);
     //console.log(pos.left);
+    UtilityService.setTagPosition( { 'tagId':tag.id, 'name':tag.name, 'positionLeft': pos.left} );
     $state.go("tab.tagcontent", { 'tagId':tag.id, 'name':tag.name, 'positionLeft': pos.left})
   };
 

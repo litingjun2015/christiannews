@@ -2,6 +2,7 @@ angular.module('christiannews.services')
 
 .factory('UtilityService', function($cordovaToast, $rootScope, $filter, myConfig, $http){
 
+    var tagposition = [];
     return{
 
       clearcache:function(){
@@ -15,6 +16,18 @@ angular.module('christiannews.services')
         window.localStorage.setItem("recommendtag", null);
         window.localStorage.setItem("tagStartId"+"recommendtag", "0"); //tagStartId
       },
+
+      setTagPosition:function(tag){
+
+        tagposition = tag;
+
+      },
+
+      getTagPosition:function(){
+
+        return tagposition;
+
+      }
 
 
     }

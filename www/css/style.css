@@ -1,5 +1,11 @@
 /* Empty. Add your own CSS if you like */
 
+/* https://forum.ionicframework.com/t/control-ionicon-icon-size/471/7 */
+.my-button,
+.my-button:before{
+  font-size:36px;
+}
+
 .scroll-bar-indicator
 {
   display: none;

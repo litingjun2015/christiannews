@@ -238,9 +238,13 @@ angular.module('christiannews')
     })
 
     .state('news-detail', {
-      url: '/news/:newsId',
-      templateUrl: 'templates/tab-news-detail.html',
-      controller: 'NewsDetailCtrl'
+      url: '/news',
+      cache: false,
+      templateUrl: 'templates/news-detail.html',
+      controller: 'NewsDetailCtrl',
+      params: {
+        'newsId': 1
+      }
     })
 
 

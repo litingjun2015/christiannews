@@ -4,19 +4,49 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="{{news.name}}">
-  <ion-content class="padding">
+<ion-view view-title="{{news.name}}"  hide-back-button="true" hide-nav-bar="true">
 
-    <!--<div class="item item-divider item-text-wrap">-->
-      <!--{{news.title}}-->
-    <!--</div>-->
-    <!--<div class="item item-divider" style="font-size:14px;font-weight:normal;text-align:right">-->
-      <!--&lt;!&ndash;{{news.created_time * 1000 | date:'MM-dd HH:mm' }} - By: {{news.author}}&ndash;&gt;-->
-      <!--{{news.time_text}} - By: {{news.author}}-->
-    <!--</div>-->
+  <div class="bar bar-header bar-stable">
+    <button class="button  icon ion-ios-arrow-left" ng-click="myGoBack()"></button>
+  </div>
+
+  <ion-content class="padding has-header ">
+
+    <div class="item item-divider item-text-wrap">
+      {{news.title}}
+    </div>
+    <div class="item item-divider" style="font-size:14px;font-weight:normal;text-align:right">
+      <!--{{news.created_time * 1000 | date:'MM-dd HH:mm' }} - By: {{news.author}}-->
+      {{news.time_text}} - 作者: {{news.author}}
+    </div>
+    <div class="item item-divider" style="font-size:14px;font-weight:normal;text-align:right">
+      频道：{{tagname}}
+    </div>
     <!--<div class="item item-text-wrap" ng-bind-html="news.content"></div>-->
 
-    <span class="large" ng-bind-html="news.content"></span>
+    <div style="margin-top: 7%">
+      <span class="large" ng-bind-html="news.content"></span>
+    </div>
 
   </ion-content>
+
+  <ion-footer-bar align-title="left" class="">
+    <label class="item item-input">
+      <input type="text" placeholder="写评论...">
+    </label>
+
+
+
+    <div class="buttons" ng-click="doSomething()" align-title="right">
+      <!--ion-ios-star-->
+
+      <button class="button ion-chatbox-working icon ion-alert my-button">  </button>
+      <button class="button ion-ios-star-outline icon ion-alert my-button">  </button>
+      <button class="button ion-share icon ion-alert my-button">  </button>
+    </div>
+    <div class="buttons" ng-click="doSomething()">
+
+    </div>
+  </ion-footer-bar>
+
 </ion-view>

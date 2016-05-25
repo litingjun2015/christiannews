@@ -4,11 +4,17 @@
 
 angular.module('christiannews.controllers')
 
-  .controller('NewsDetailCtrl', function($scope, $stateParams, Chats, $http, myConfig, ToastService) {
+  .controller('NewsDetailCtrl', function(UtilityService, $state, $scope, $ionicHistory, $stateParams, Chats, $http, myConfig, ToastService) {
 
     //$scope.origurl = "http://192.168.31.207:3000/article/" + $stateParams.newsId;
     //$scope.url = $sce.trustAsResourceUrl($scope.origurl);
 
+    $scope.myGoBack = function() {
+      console.log("$ionicHistory.goBack()");
+      //$state.go("tab.tagcontent", { 'tagId':tag.id, 'name':tag.name, 'positionLeft': pos.left})
+
+      $state.go("tab.tagcontent", UtilityService.getTagPosition() );
+    };
 
     var url= myConfig.backend + "/article/" + $stateParams.newsId;
     console.log(url);
