@@ -8,6 +8,7 @@
     var params = {
       scene: scene
     };
+    console.log(scene);
 
     if (id == 'send-text') {
       params.text = "人文的东西并不是体现在你看得到的方面，它更多的体现在你看不到的那些方面，它会影响每一个功能，这才是最本质的。但是，对这点可能很多人没有思考过，以为人文的东西就是我们搞一个很小清新的图片什么的。”综合来看，人文的东西其实是贯穿整个产品的脉络，或者说是它的灵魂所在。";
@@ -114,6 +115,8 @@
           return false;
       }
     }
+
+    console.log(params);
 
     Wechat.share(params, function () {
       alert("Success");
