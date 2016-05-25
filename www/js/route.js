@@ -121,6 +121,16 @@ angular.module('christiannews')
       }
     })
 
+    .state('tab.demo', {
+      url: '/demo',
+      views: {
+        'tab-demo': {
+          templateUrl: 'templates/tab-demo.html',
+          controller: 'DemoCtrl'
+        }
+      }
+    })
+
     .state('tab.news', {
       url: '/news',
       views: {
