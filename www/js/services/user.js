@@ -43,7 +43,7 @@ angular.module('christiannews.services')
 
       storeUser:function(userObject){
         user = userObject;
-        window.localStorage.setItem('username',userObject.username);//默认记住用户名
+        window.localStorage.setItem('username',userObject.nickname);//默认记住用户名
         window.localStorage.setItem('user',JSON.stringify(userObject));
       },
 

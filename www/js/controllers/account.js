@@ -3,7 +3,6 @@ angular.module('christiannews.controllers')
 .controller('AccountCtrl',  function($window,$scope,$state,$ionicHistory, UserService , ToastService, $cordovaAppVersion, $ionicPlatform, $cordovaEmailComposer, $fileLogger, $sce, $ionicActionSheet, $timeout, $http, $cordovaFileTransfer, $cordovaFile, $fileLogger, UtilityService) {
 
     $scope.user = UserService.getUser();
-    $scope.editusername = $scope.user.username;
 
     $scope.version = null;
     $scope.url = '';
@@ -11,6 +10,83 @@ angular.module('christiannews.controllers')
     $scope.info = [];
 
     $scope.isandroid = ionic.Platform.isAndroid();
+
+
+    $scope.goLoginWechat = function(){
+
+
+      var testData = {
+        "openid":" OPENID",
+        "nickname": "NICKNAME",
+        "sex":"1",
+        "province":"PROVINCE",
+        "city":"CITY",
+        "country":"COUNTRY",
+        "headimgurl":    "http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
+        //"headimgurl":    "",
+        "privilege":[
+          "PRIVILEGE1",
+          "PRIVILEGE2"
+        ],
+        "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
+      };
+      if(testData.headimgurl != "")
+      {
+        var newstr=testData.headimgurl.substring(0,testData.headimgurl.length-2);
+        testData.headimgurl = newstr + "132";
+      }
+
+      UserService.storeUser(testData);
+      $scope.user = UserService.getUser();
+      $scope.isUserLogin = true;
+
+
+
+      var scope = "snsapi_userinfo",
+        state = "_" + (+new Date());
+      Wechat.auth(scope, state, function (response) {
+        // you may use response.code to get the access token.
+        alert(JSON.stringify(response));
+        console.log(JSON.stringify(response));
+
+        var url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + "wxbd05c4fc6e17966e" + "&secret=" + "5c2fbf081e1d7fb33b0a7975f83d02a3" + "&code=CODE&grant_type=authorization_code";
+        console.log(url);
+        $http.get(url)
+          .success(function (response)
+          {
+            var access_token = response.access_token;
+            var openid = response.openid;
+
+            var url = "https://api.weixin.qq.com/sns/userinfo?access_token=" + access_token + "&openid=" + openid + "&lang=zh_CN";
+            console.log(url);
+            $http.get(url)
+              .success(function (response)
+              {
+                console.log(response);
+
+                // save to db
+                UserService.storeUser(response);
+
+              }).error(function(response) {
+
+              ToastService.showShortCenter('获取数据失败');
+              //$rootScope.tagStartId = $rootScope.tagStartId-myConfig.fetchNum;
+
+            });
+
+          }).error(function(response) {
+
+          ToastService.showShortCenter('获取数据失败');
+          //$rootScope.tagStartId = $rootScope.tagStartId-myConfig.fetchNum;
+
+        });
+
+
+      }, function (reason) {
+        alert("Failed: " + reason);
+      });
+
+    }
 
     //$scope.origurl = myConfig.backend_pay + "/backend/web/v1/fixqrcode/getqrcode"
     //  +"?id="+$scope.user.id+"&access_token="+PaymentService.getToken();
@@ -153,13 +229,13 @@ angular.module('christiannews.controllers')
       });
     }
 
-    if(ionic.Platform.isAndroid() || ionic.Platform.isIOS() ){
-      $ionicPlatform.ready(function() {
-        $cordovaAppVersion.getVersionNumber().then(function (version) {
-          $scope.version = version;
-        });
-      });
-    }
+    //if(ionic.Platform.isAndroid() || ionic.Platform.isIOS() ){
+    //  $ionicPlatform.ready(function() {
+    //    $cordovaAppVersion.getVersionNumber().then(function (version) {
+    //      $scope.version = version;
+    //    });
+    //  });
+    //}
 
     $scope.logout = function(){
       UserService.logout();

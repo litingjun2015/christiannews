@@ -8,10 +8,11 @@
 
       <div class="btn-list-index index-avatar" style="height: 30vh;background-color: #618BED">
         <div class="row" style="height: 100%">
-          <div class="col " style="height: 100%">
-            <button class="button button-icon button-full " ng-click=" goLogin()" style="line-height: 20px">
-              <img src="img/icon-avatar.png" style="height: 16vh;;margin: 0;padding: 0">
-              <i ng-show="isUserLogin" style="color:white">{{user.username}}</i>
+          <div class="col" style="height: 100%">
+            <button class="button button-icon button-full " ng-click=" goLoginWechat()" style="line-height: 20px">
+              <img ng-show="!isUserLogin || user.headimgurl == ''" src="img/icon-avatar.png" style="height: 16vh;;margin: 0;padding: 0">
+              <img ng-show="isUserLogin && user.headimgurl != '' " src="{{user.headimgurl}}" style="height: 16vh;;margin: 0;padding: 0; border-radius: 50%;" >
+              <i ng-show="isUserLogin" style="color:white">{{user.nickname}}</i>
               <i ng-show="isUserLogin" style="color:white">{{user.telephone}}</i>
               <i ng-show="!isUserLogin">您尚未登录</i>
             </button>

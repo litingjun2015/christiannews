@@ -43,7 +43,7 @@
   <plugin name="cordova-plugin-x-toast" spec="https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git"/>
   <plugin name="cordova-plugin-whitelist" spec="^1.2.1"/>
   <plugin name="cordova-plugin-wechat" spec="~1.1.4">
-    <variable name="WECHATAPPID" value="wx8ce2e64af40f99d5" />
+    <variable name="WECHATAPPID" value="wxbd05c4fc6e17966e" />
   </plugin>
   <plugin name="cordova-plugin-x-socialsharing" spec="~5.0.12" />
   <plugin name="cordova-plugin-file" spec="~4.2.0" />

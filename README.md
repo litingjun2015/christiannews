@@ -17,8 +17,11 @@ ionic plugin add cordova-plugin-wechat --variable wechatappid=wx8ce2e64af40f99d5
 cordova plugin remove "cordova-plugin-wechat"
 ionic plugin add cordova-plugin-wechat --variable wechatappid=wxbd05c4fc6e17966e
 
-## debug 签名
+## office debug 签名
 4b068abcf712398459a0398fc648cab5
+
+## home debug 签名
+5cb4983623473aab3ade11247505bca5
 
 ## 发布签名
 ae499917f773b0da4eb85e34bed5a57e
@@ -33,3 +36,8 @@ $ cordova prepare
 
 ## 微信登录
 http://mp.weixin.qq.com/wiki/17/c0f37d5704f0b64713d5d2c37b468d75.html
+
+基督教新闻
+
+AppID：wxbd05c4fc6e17966e
+AppSecret：5c2fbf081e1d7fb33b0a7975f83d02a3
