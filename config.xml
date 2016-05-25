@@ -45,4 +45,5 @@
   <plugin name="cordova-plugin-wechat" spec="~1.1.4">
     <variable name="WECHATAPPID" value="wx8ce2e64af40f99d5" />
   </plugin>
+  <plugin name="cordova-plugin-x-socialsharing" spec="~5.0.12" />
 </widget>
