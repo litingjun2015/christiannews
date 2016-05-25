@@ -197,6 +197,17 @@ angular.module('christiannews')
       }
     })
 
+    .state('tab.my', {
+      cache: false,
+      url: '/my',
+      views: {
+        'tab-my': {
+          templateUrl: 'templates/account/index.html',
+          controller: 'AccountCtrl'
+        }
+      }
+    })
+
 
     .state('taglist',{
       cache: false,
@@ -246,6 +257,8 @@ angular.module('christiannews')
         'newsId': 1
       }
     })
+
+
 
 
   ;

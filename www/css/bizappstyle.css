@@ -1,0 +1,362 @@
+/* Empty. Add your own CSS if you like */
+
+
+.overflow-scroll {
+  overflow-y: auto !important;
+}
+/*
+.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
+  color: #2c8aff;
+}*/
+
+.border-right-bottom {
+  border-style: none solid solid none;
+  border-width: 1px;
+  border-color: #eeeeee
+}
+
+.border-right{
+  border-style: none solid none none;
+  border-width: 1px;
+  border-color: #eeeeee
+}
+
+.border-bottom{
+  border-style: none none solid none;
+  border-width: 1px;
+  border-color: #eeeeee
+}
+.btn-list .row i, .btn-list-index .row i{
+  display: block;
+
+}
+.btn-list .row i.icon::before{
+  font-size: 60px;
+
+}
+.btn-list .row button{
+  line-height: 40px;
+  font-size: 12px;
+  height: 100%;
+}
+
+.btn-list-index .row i.icon::before{
+  font-size: 60px;
+  line-height: 60px;
+}
+.btn-list-index .row button{
+  line-height: 20px;
+  font-size: 14px;
+  height: 100%;
+}
+
+.list-slide .row{
+  font-size: 16px;
+}
+.login-view {
+  background: url('../img/login-bg.jpg') no-repeat top center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+
+}
+.register-view {
+  background: url('../img/register.png') no-repeat top center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+
+}
+.account-view {
+  background: url('../img/my.png') no-repeat top center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+
+}
+.center-conent .scroll-content {
+  display: table !important;
+  width: 100% !important;
+  height: 60% !important;
+}
+.center-conent .scroll {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.detail-list .item{
+  font-size: 12px;
+  padding: 5px;
+}
+.da-disabled {
+ /* filter: Alpha(Opacity=30);
+  opacity: .3;*/
+  zoom: 1;
+  cursor: default !important;
+  pointer-events: none;
+}
+.index-avatar i, .index-payment i{
+  color: white;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+}
+.da-header .nav-bar-block,.da-header .bar {
+  background-color: #DFEBF4 !important;
+}
+
+.da-header2 .nav-bar-block,.da-header2 .bar {
+  background-color: #7CACD2 !important;
+}
+
+
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
+#bottom {
+  display: block;
+  margin-top: 10px;
+}
+
+.leftmargin {
+  margin-left: 8px
+}
+.input .row{
+  height: 25%;
+  margin: 0;
+  padding: 0;
+}
+
+.input .row .col{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.input .row .col .button{
+  height: 80%;
+  vertical-align: middle;
+}
+
+.modal1 {
+  display: block;
+  position: absolute;
+  top: 30%;
+  left: 12%;
+  /*bottom:1000px;*/
+  z-index: 10;
+  overflow: hidden;
+  min-height: 49%;
+  width: 70%;
+  background-color: #fff;
+  /*background-color:#0a9ec7;*/
+}
+
+
+/**
+ * Action Sheets for Android
+ * --------------------------------------------------
+ */
+.platform-android .action-sheet-backdrop {
+  -webkit-transition: background-color 150ms ease-in-out;
+  transition: background-color 150ms ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.platform-android .action-sheet-backdrop.active {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.platform-android .action-sheet-wrapper {
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+  -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 500ms;
+  transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 500ms;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.platform-android .action-sheet-up {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.platform-android .action-sheet {
+  margin-left: 8px;
+  margin-right: 8px;
+  width: auto;
+  z-index: 11;
+  overflow: hidden;
+}
+
+.platform-android .action-sheet .button {
+  display: block;
+  padding: 1px;
+  width: 100%;
+  border-radius: 0;
+  border-color: #d1d3d6;
+  background-color: transparent;
+  color: #007aff;
+  font-size: 21px;
+}
+
+.platform-android .action-sheet .button:hover {
+  color: #007aff;
+}
+
+.platform-android .action-sheet .button.destructive {
+  color: #ff3b30;
+}
+
+.platform-android .action-sheet .button.destructive:hover {
+  color: #ff3b30;
+}
+
+.platform-android .action-sheet .button.active, .platform-android .action-sheet .button.activated {
+  box-shadow: none;
+  border-color: #d1d3d6;
+  color: #007aff;
+  background: #e4e5e7;
+}
+
+.platform-android .action-sheet-has-icons .icon {
+  position: absolute;
+  left: 16px;
+}
+
+.platform-android .action-sheet-title {
+  padding: 16px;
+  color: #8f8f8f;
+  text-align: center;
+  font-size: 13px;
+}
+
+.platform-android .action-sheet-group {
+  margin-bottom: 8px;
+  border-radius: 4px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.platform-android .action-sheet-group .button {
+  border-width: 1px 0px 0px 0px;
+}
+
+.platform-android .action-sheet-group .button:first-child:last-child {
+  border-width: 0;
+}
+
+.platform-android .action-sheet-options {
+  background: #f1f2f3;
+}
+
+.platform-android .action-sheet-cancel .button {
+  font-weight: 500;
+}
+
+.platform-android .action-sheet-open {
+  pointer-events: none;
+}
+
+.platform-android .action-sheet-open.modal-open .modal {
+  pointer-events: none;
+}
+
+.platform-android .action-sheet-open .action-sheet-backdrop {
+  pointer-events: auto;
+}
+
+.platform-android .action-sheet .action-sheet-title, .platform-android .action-sheet .button {
+  text-align: center;
+}
+
+.platform-android .action-sheet-cancel {
+  display: block;
+}
+.dis{
+  opacity:0.5;
+}
+.title0 {
+  position:absolute;
+  top:0;
+  right: 49px;
+  left:0;
+  z-index:0;
+  overflow:hidden;
+  margin:0 10px;
+  min-width:30px;
+  height:43px;
+  text-align:center;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:17px;
+  font-weight:400;
+  line-height:44px}
+.button0 {
+  border-color: transparent;
+  background-color: #f8f8f8;
+  color: #444;
+  position: relative;
+  display: run-in;
+  margin: 0;
+  padding: 0 12px;
+  min-width: 52px;
+  min-height: 47px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  vertical-align: top;
+  text-align: center;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  line-height: 42px;
+  cursor: pointer; }
+.bar55{
+  /*display: flex;*/
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-user-select: none;
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 9;
+  box-sizing: border-box;
+  padding: 5px;
+  width: 100%;
+  height: 44px;
+
+  border-width: 0;
+  border-style: solid;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid #ddd;
+  /*background-color: white;*/
+  /* border-width: 1px will actually create 2 device pixels on retina */
+  /* this nifty trick sets an actual 1px border on hi-res displays */
+  background-size: 0;
+}
+.row44 {
+  display: flex;
+  padding: 5px;
+  width: 100%; }

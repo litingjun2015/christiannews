@@ -46,4 +46,5 @@
     <variable name="WECHATAPPID" value="wx8ce2e64af40f99d5" />
   </plugin>
   <plugin name="cordova-plugin-x-socialsharing" spec="~5.0.12" />
+  <plugin name="cordova-plugin-file" spec="~4.2.0" />
 </widget>

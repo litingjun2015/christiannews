@@ -1,0 +1,72 @@
+<ion-view view-title="首页" hide-nav-bar="true" >
+
+
+  <meta name="format-detection" content="telephone=no"/>
+
+  <ion-content style="height: 100%" scroll="false">
+
+
+      <div class="btn-list-index index-avatar" style="height: 30vh;background-color: #618BED">
+        <div class="row" style="height: 100%">
+          <div class="col " style="height: 100%">
+            <button class="button button-icon button-full " ng-click=" goLogin()" style="line-height: 20px">
+              <img src="img/icon-avatar.png" style="height: 16vh;;margin: 0;padding: 0">
+              <i ng-show="isUserLogin" style="color:white">{{user.username}}</i>
+              <i ng-show="isUserLogin" style="color:white">{{user.telephone}}</i>
+              <i ng-show="!isUserLogin">您尚未登录</i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="btn-list-index index-payment" style="height: 22vh;background-color: #4274EA">
+        <div class="row" style="height: 100%">
+          <div class="col " style="height: 100%">
+            <button class="button button-icon button-full" style="line-height: 20px;margin: 0" ng-click="goIndexInput()">
+              <img src="img/payment.png" style="height: 13vh;margin: 0;padding: 0">
+              <i>收款</i>
+              <i> </i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+
+    <div class="btn-list-index" style="height: 48vh">
+      <div class="row" style="height: 50%">
+        <div class="col col-50 border-right-bottom" style="height: 100%">
+          <button class="button button-icon button-full" ng-click="goIndexBalance()">
+            <i class="icon  ion-ios-calculator" style="color: #E46A67;"></i> 账单
+          </button>
+        </div>
+
+        <div class="col col-50 border-bottom" style="height: 100%">
+          <button class="button button-icon button-full" ng-click="goIndexMessage()">
+            <i class="icon ion-chatbubble-working " style="color: #689E73;"></i> 消息
+          </button>
+        </div>
+
+      </div>
+
+      <div class="row" style="height: 50%">
+
+        <div class="col col-50 border-right" style="height: 100%">
+          <button class="button button-icon button-full" ng-click="goIndexMerchantForm(user.openid, false)">
+            <i class="icon  ion-ios-paper" style="color: #6585AD;"></i> {{status}}
+          </button>
+        </div>
+
+        <div class="col col-50 " style="height: 100%">
+          <button class="button button-icon button-full" ui-sref="tab.index.my.distributions">
+            <i class="icon ion-ios-person " style="color: #DBA042;"></i> 推荐
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+
+  </ion-content>
+</ion-view>
