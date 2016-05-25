@@ -30,3 +30,6 @@ ae499917f773b0da4eb85e34bed5a57e
 ## https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
 $ cordova plugin add cordova-plugin-x-socialsharing
 $ cordova prepare
+
+## 微信登录
+http://mp.weixin.qq.com/wiki/17/c0f37d5704f0b64713d5d2c37b468d75.html
