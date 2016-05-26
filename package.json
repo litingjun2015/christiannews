@@ -27,7 +27,9 @@
       },
       "locator": "cordova-plugin-wechat",
       "id": "cordova-plugin-wechat"
-    }
+    },
+    "cordova-hot-code-push-plugin",
+    "cordova-hot-code-push-local-dev-addon"
   ],
   "cordovaPlatforms": [
     "android"

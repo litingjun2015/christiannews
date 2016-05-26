@@ -47,4 +47,9 @@
   </plugin>
   <plugin name="cordova-plugin-x-socialsharing" spec="~5.0.12" />
   <plugin name="cordova-plugin-file" spec="~4.2.0" />
+  <plugin name="cordova-hot-code-push-plugin" spec="~1.3.2" />
+  <plugin name="cordova-hot-code-push-local-dev-addon" spec="~0.2.2" />
+  <chcp>
+    <config-file url="http://www.duangwifi.cn/christiannews/www/chcp.json"/>
+  </chcp>
 </widget>
