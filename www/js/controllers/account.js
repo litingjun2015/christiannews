@@ -89,7 +89,7 @@ angular.module('christiannews.controllers')
         return;
       }
 
-      $scope.loadTestData();
+      //$scope.loadTestData();
 
 
       if(ionic.Platform.isAndroid()||ionic.Platform.isIOS())

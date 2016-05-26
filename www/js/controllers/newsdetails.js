@@ -4,7 +4,7 @@
 
 angular.module('christiannews.controllers')
 
-  .controller('NewsDetailCtrl', function($ionicScrollDelegate, UserService, $ionicPopup, UtilityService, $state, $scope, $ionicHistory, $stateParams, Chats, $http, myConfig, ToastService) {
+  .controller('NewsDetailCtrl', function($location, $ionicScrollDelegate, UserService, $ionicPopup, UtilityService, $state, $scope, $ionicHistory, $stateParams, Chats, $http, myConfig, ToastService) {
 
     //$scope.origurl = "http://192.168.31.207:3000/article/" + $stateParams.newsId;
     //$scope.url = $sce.trustAsResourceUrl($scope.origurl);
@@ -16,7 +16,9 @@ angular.module('christiannews.controllers')
 
 
     $scope.scrollComments = function() {
-      $ionicScrollDelegate.$getByHandle('comments').scrollBottom();
+      $location.hash("comment");
+
+      $ionicScrollDelegate.anchorScroll();
     }
 
 
@@ -86,6 +88,7 @@ angular.module('christiannews.controllers')
           {
             console.log(response);
             $state.reload("news-detail", { 'newsId': $stateParams.newsId});
+
 
           }).error(function(response) {
 
@@ -324,7 +327,12 @@ angular.module('christiannews.controllers')
       console.log("$ionicHistory.goBack()");
       //$state.go("tab.tagcontent", { 'tagId':tag.id, 'name':tag.name, 'positionLeft': pos.left})
 
-      $state.go("tab.tagcontent", UtilityService.getTagPosition() );
+      console.log(UtilityService.getTagPosition());
+
+      if(UtilityService.getTagPosition() == null)
+        $state.go("tab.recommend");
+      else
+        $state.go("tab.tagcontent", UtilityService.getTagPosition() );
     };
 
 

@@ -29,6 +29,7 @@ angular.module('christiannews.controllers')
     var pos = $ionicScrollDelegate.$getByHandle('small').getScrollPosition();
     //console.log(pos);
     //console.log(pos.left);
+    UtilityService.setTagPosition( null );
     $state.go("tab.recommend");
   };
 
@@ -37,6 +38,7 @@ angular.module('christiannews.controllers')
     //console.log(pos);
     //console.log(pos.left);
     UtilityService.setTagPosition( { 'tagId':tag.id, 'name':tag.name, 'positionLeft': pos.left} );
+    console.log(UtilityService.getTagPosition());
     $state.go("tab.tagcontent", { 'tagId':tag.id, 'name':tag.name, 'positionLeft': pos.left})
   };
 

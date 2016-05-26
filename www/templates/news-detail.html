@@ -30,12 +30,7 @@
 
 
 
-    <ion-scroll delegate-handle="small" style="height: 100px;">
-      <button ng-click="scrollSmallToTop()">
-        Scroll small area to top!
-      </button>
-    </ion-scroll>
-
+    <a id="comment"></a>
     <div class="item item-divider item-text-wrap" >
       评论
     </div>
@@ -78,7 +73,7 @@
     <div class="buttons" ng-click="doSomething()" align-title="right">
       <!--ion-ios-star-->
 
-      <button class="button ion-chatbox-working icon ion-alert my-button" ng-click="scrollSmallToTop()">  </button>
+      <button class="button ion-chatbox-working icon ion-alert my-button" ng-click="scrollComments()">  </button>
       <button class="button ion-ios-star-outline icon ion-alert my-button" ng-click="collect()" ng-show="collected == false">  </button>
       <button class="button ion-ios-star icon ion-alert my-button" ng-click="collect()" ng-show="collected == true">  </button>
       <button class="button ion-share icon ion-alert my-button" ng-click="share()">  </button>
