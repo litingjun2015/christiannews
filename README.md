@@ -66,3 +66,7 @@ AppSecret：5c2fbf081e1d7fb33b0a7975f83d02a3
 }
 
 4. cordova-hcp build
+
+5. 
+git checkout -b 0.9.3
+git push origin 0.9.3
