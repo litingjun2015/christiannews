@@ -41,3 +41,7 @@ http://mp.weixin.qq.com/wiki/17/c0f37d5704f0b64713d5d2c37b468d75.html
 
 AppID：wxbd05c4fc6e17966e
 AppSecret：5c2fbf081e1d7fb33b0a7975f83d02a3
+
+## https://github.com/nordnet/cordova-hot-code-push/wiki/Quick-start-guide-for-Ionic-project
+
+1. 
