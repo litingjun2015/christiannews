@@ -171,7 +171,7 @@ angular.module('christiannews.controllers')
 
   $scope.doRefresh = function() {
 
-    console.log("---------------- cordova-hot-code-push test js updates 1.7");
+    console.log("---------------- cordova-hot-code-push test js updates 1.8");
 
     var url = myConfig.backend + "/listLatestArticles/start="+ $rootScope.recommendStartId + "&fetch=" + myConfig.fetchNum;
     console.log(url);
