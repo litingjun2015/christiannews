@@ -1,5 +1,12 @@
 /* Empty. Add your own CSS if you like */
 
+.popup-container {
+  background-color: transparent;
+}
+.backdrop{
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 /* https://forum.ionicframework.com/t/control-ionicon-icon-size/471/7 */
 .my-button,
 .my-button:before{

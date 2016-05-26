@@ -4,13 +4,102 @@
 
 angular.module('christiannews.controllers')
 
-  .controller('NewsDetailCtrl', function(UtilityService, $state, $scope, $ionicHistory, $stateParams, Chats, $http, myConfig, ToastService) {
+  .controller('NewsDetailCtrl', function($ionicScrollDelegate, UserService, $ionicPopup, UtilityService, $state, $scope, $ionicHistory, $stateParams, Chats, $http, myConfig, ToastService) {
 
     //$scope.origurl = "http://192.168.31.207:3000/article/" + $stateParams.newsId;
     //$scope.url = $sce.trustAsResourceUrl($scope.origurl);
 
     $scope.newsmeta = [];
     $scope.collected = false;
+    $scope.user = UserService.getUser();
+
+
+
+    $scope.scrollComments = function() {
+      $ionicScrollDelegate.$getByHandle('comments').scrollBottom();
+    }
+
+
+    // Triggered on a button click, or some other target
+    $scope.showPopup = function() {
+      if(!UserService.isUserLogin())
+      {
+        ToastService.showShortCenter('发表评论请先登录');
+        $state.go("tab.my");
+        return;
+      }
+
+      $scope.data = {};
+
+      // An elaborate, custom popup
+      var myPopup = $ionicPopup.show({
+        template: '<label class="item item-input" style="height: 200px;"><textarea placeholder="带着爱和尊重回复" ng-model="data.comment"></textarea></label>',
+        title: '',
+        subTitle: '',
+        scope: $scope,
+        buttons: [
+          {text: '取消'},
+          {
+            text: '<b>发布</b>',
+            type: 'button-positive',
+            onTap: function (e) {
+
+              console.log($scope.data.comment.length);
+
+              if($scope.data.comment.length>1000)
+              {
+                ToastService.showShortCenter('评论请少于1000字');
+              }
+
+              if (!$scope.data.comment) {
+                //don't allow the user to close unless he enters wifi password
+                e.preventDefault();
+              } else {
+                return $scope.data.comment;
+              }
+            }
+          }
+        ]
+      });
+
+      myPopup.then(function(res) {
+        console.log('Tapped!', res);
+
+        $scope.user = UserService.getUser();
+
+        var postData = 'article_id=' + $stateParams.newsId
+          +'&user_id='+$scope.user.id
+          +'&content='+res;
+
+
+        var url = myConfig.backend + "/addComment/";
+        console.log(url);
+        $http({
+          method: 'POST',
+          url: url,
+          data: postData,
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+          timeout: 3000,
+          cache: false
+        })
+          .success(function (response)
+          {
+            console.log(response);
+            $state.reload("news-detail", { 'newsId': $stateParams.newsId});
+
+          }).error(function(response) {
+
+          ToastService.showShortCenter('获取数据失败');
+          //$rootScope.tagStartId = $rootScope.tagStartId-myConfig.fetchNum;
+
+        });
+
+      });
+
+      //$timeout(function() {
+      //  myPopup.close(); //close the popup after 3 seconds for some reason
+      //}, 3000);
+    };
 
     $scope.$watch('$viewContentLoaded', function() {
       $scope.init();
@@ -29,7 +118,56 @@ angular.module('christiannews.controllers')
 
         }).error(function(response) {
 
-        ToastService.showShortCenter('获取数据失败');
+        //ToastService.showShortCenter('获取数据失败');
+        //$rootScope.tagStartId = $rootScope.tagStartId-myConfig.fetchNum;
+
+      });
+
+
+      var url= myConfig.backend + "/article/" + $stateParams.newsId;
+      console.log(url);
+      $http.get(url)
+        .success(function (response)
+        {
+          $scope.news = response;
+          //console.log($scope.news);
+
+        }).error(function(response) {
+
+        //ToastService.showShortCenter('获取数据失败');
+
+      });
+
+
+      var url= myConfig.backend + "/getTagnameFromNewsid/newsid=" + $stateParams.newsId;
+      console.log(url);
+      $http.get(url)
+        .success(function (response)
+        {
+          $scope.tagname = response[0].category_name + ' - ' + response[0].name;
+          console.log($scope.tagname);
+
+        }).error(function(response) {
+
+        //ToastService.showShortCenter('获取数据失败');
+
+      });
+
+
+      var url = myConfig.backend + "/getComments/newsid=" + $stateParams.newsId;
+      console.log(url);
+      $http.get(url)
+        .success(function (response)
+        {
+          //$scope.comments = response[0];
+
+          //console.log(response);
+          $scope.comments = response;
+          console.log($scope.comments);
+
+        }).error(function(response) {
+
+        //ToastService.showShortCenter('获取数据失败');
         //$rootScope.tagStartId = $rootScope.tagStartId-myConfig.fetchNum;
 
       });
@@ -189,34 +327,7 @@ angular.module('christiannews.controllers')
       $state.go("tab.tagcontent", UtilityService.getTagPosition() );
     };
 
-    var url= myConfig.backend + "/article/" + $stateParams.newsId;
-    console.log(url);
-    $http.get(url)
-      .success(function (response)
-      {
-        $scope.news = response;
-        console.log($scope.news);
 
-      }).error(function(response) {
-
-      ToastService.showShortCenter('获取数据失败');
-
-    });
-
-
-    var url= myConfig.backend + "/getTagnameFromNewsid/newsid=" + $stateParams.newsId;
-    console.log(url);
-    $http.get(url)
-      .success(function (response)
-      {
-        $scope.tagname = response[0].category_name + ' - ' + response[0].name;
-        console.log($scope.tagname);
-
-      }).error(function(response) {
-
-      ToastService.showShortCenter('获取数据失败');
-
-    });
 
 
 })

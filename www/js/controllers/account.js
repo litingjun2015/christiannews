@@ -17,115 +17,146 @@ angular.module('christiannews.controllers')
       $state.go("tab.info");
     }
 
+    $scope.loadTestData = function(){
+
+      var testData = {
+        "openid":"OPENID",
+        "nickname": "NICKNAME",
+        "sex":"1",
+        "province":"PROVINCE",
+        "city":"CITY",
+        "country":"COUNTRY",
+        "language":"zh_CN",
+        "headimgurl":    "http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
+        //"headimgurl":    "",
+        "privilege":[
+          "PRIVILEGE1",
+          "PRIVILEGE2"
+        ],
+        "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
+      };
+      if(testData.headimgurl != "")
+      {
+        var newstr=testData.headimgurl.substring(0,testData.headimgurl.length-2);
+        testData.headimgurl = newstr + "132";
+      }
+
+      var postData = 'openid=OPENID4'
+        +'&nickname='+"NICKNAME5"
+        +'&sex='+"5"
+        +'&province='+"PROVINCE5"
+        +'&city='+"CITY5"
+        +'&country='+"COUNTRY5"
+        +'&language='+"zh_CN5"
+        +'&headimgurl='+"5http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46"
+        +'&privilege='+'["5PRIVILEGE1","PRIVILEGE23"]'
+        +'&unionid='+"5o6_bmasdasdsad6_2sgVt7hMZOPfL3";
+
+
+      var url = myConfig.backend + "/addWechatuser/";
+      console.log(url);
+      $http({
+        method: 'POST',
+        url: url,
+        data: postData,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+        timeout: 3000,
+        cache: false
+      })
+        .success(function (response)
+        {
+          testData.id = response[0].id;
+          UserService.storeUser(testData);
+          $scope.user = UserService.getUser();
+
+          console.log($scope.user);
+
+          $state.reload("tab.my");
+
+        }).error(function(response) {
+
+        ToastService.showShortCenter('获取数据失败');
+        //$rootScope.tagStartId = $rootScope.tagStartId-myConfig.fetchNum;
+
+      });
+    }
+
     $scope.goLoginWechat = function(){
 
-      //var testData = {
-      //  "openid":"OPENID",
-      //  "nickname": "NICKNAME",
-      //  "sex":"1",
-      //  "province":"PROVINCE",
-      //  "city":"CITY",
-      //  "country":"COUNTRY",
-      //  "language":"zh_CN",
-      //  "headimgurl":    "http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
-      //  //"headimgurl":    "",
-      //  "privilege":[
-      //    "PRIVILEGE1",
-      //    "PRIVILEGE2"
-      //  ],
-      //  "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
-      //};
-      //if(testData.headimgurl != "")
-      //{
-      //  var newstr=testData.headimgurl.substring(0,testData.headimgurl.length-2);
-      //  testData.headimgurl = newstr + "132";
-      //}
-      //
-      //var postData = 'openid=OPENID2'
-      //  +'&nickname='+"NICKNAME2"
-      //  +'&sex='+"2"
-      //  +'&province='+"PROVINCE2"
-      //  +'&city='+"CITY2"
-      //  +'&country='+"COUNTRY2"
-      //  +'&language='+"zh_CN2"
-      //  +'&headimgurl='+"2http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46"
-      //  +'&privilege='+'["PRIVILEGE1","PRIVILEGE23"]'
-      //  +'&unionid='+"o6_bmasdasdsad6_2sgVt7hMZOPfL3";
-      //
-      //UserService.storeUser(testData);
-      //$scope.user = UserService.getUser();
-      //
-      //var url = myConfig.backend + "/addWechatuser/";
-      //console.log(url);
-      //$http({
-      //  method: 'POST',
-      //  url: url,
-      //  data: postData,
-      //  headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-      //  timeout: 3000,
-      //  cache: false
-      //})
-      //  .success(function (response)
-      //  {
-      //    console.log(response);
-      //
-      //  }).error(function(response) {
-      //
-      //  ToastService.showShortCenter('获取数据失败');
-      //  //$rootScope.tagStartId = $rootScope.tagStartId-myConfig.fetchNum;
-      //
-      //});
+      if(UserService.isUserLogin())
+      {
+        console.log("isUserLogin");
+        return;
+      }
+
+      $scope.loadTestData();
 
 
-      var scope = "snsapi_userinfo",
-        state = "_" + (+new Date());
-      Wechat.auth(scope, state, function (response) {
-        // you may use response.code to get the access token.
-        //alert(JSON.stringify(response));
-        console.log(JSON.stringify(response));
+      if(ionic.Platform.isAndroid()||ionic.Platform.isIOS())
+      {
+          var scope = "snsapi_userinfo",
+            state = "_" + (+new Date());
+          Wechat.auth(scope, state, function (response) {
+            // you may use response.code to get the access token.
+            //alert(JSON.stringify(response));
+            console.log(JSON.stringify(response));
 
-        var url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + "wxbd05c4fc6e17966e" + "&secret=" + "5c2fbf081e1d7fb33b0a7975f83d02a3" + "&code=" + response.code + "&grant_type=authorization_code";
-        console.log(url);
-        $http.get(url)
-          .success(function (response)
-          {
-            var access_token = response.access_token;
-            var openid = response.openid;
-
-            var url = "https://api.weixin.qq.com/sns/userinfo?access_token=" + access_token + "&openid=" + openid + "&lang=zh_CN";
+            var url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + "wxbd05c4fc6e17966e" + "&secret=" + "5c2fbf081e1d7fb33b0a7975f83d02a3" + "&code=" + response.code + "&grant_type=authorization_code";
             console.log(url);
             $http.get(url)
               .success(function (response)
               {
-                console.log(response);
+                var access_token = response.access_token;
+                var openid = response.openid;
 
-                var postData = 'openid=' + response.openid
-                  +'&nickname='+response.nickname
-                  +'&sex='+response.sex
-                  +'&province='+response.province
-                  +'&city='+response.city
-                  +'&country='+response.country
-                  +'&language='+response.language
-                  +'&headimgurl='+response.headimgurl
-                  +'&privilege='+response.privilege
-                  +'&unionid='+response.unionid;
-
-                UserService.storeUser(response);
-                $scope.user = UserService.getUser();
-
-                var url = myConfig.backend + "/addWechatuser/";
+                var url = "https://api.weixin.qq.com/sns/userinfo?access_token=" + access_token + "&openid=" + openid + "&lang=zh_CN";
                 console.log(url);
-                $http({
-                  method: 'POST',
-                  url: url,
-                  data: postData,
-                  headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-                  timeout: 3000,
-                  cache: false
-                })
+                $http.get(url)
                   .success(function (response)
                   {
                     console.log(response);
+
+                    var postData = 'openid=' + response.openid
+                      +'&nickname='+response.nickname
+                      +'&sex='+response.sex
+                      +'&province='+response.province
+                      +'&city='+response.city
+                      +'&country='+response.country
+                      +'&language='+response.language
+                      +'&headimgurl='+response.headimgurl
+                      +'&privilege='+response.privilege
+                      +'&unionid='+response.unionid;
+
+                    $scope.user = response;
+
+                    var url = myConfig.backend + "/addWechatuser/";
+                    console.log(url);
+                    $http({
+                      method: 'POST',
+                      url: url,
+                      data: postData,
+                      headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                      timeout: 3000,
+                      cache: false
+                    })
+                      .success(function (response)
+                      {
+                        console.log(response);
+                        $scope.user.id = response[0].id;
+                        UserService.storeUser($scope.user);
+                        $scope.user = UserService.getUser();
+
+                        console.log($scope.user);
+                        $state.reload("tab.my");
+
+                      }).error(function(response) {
+
+                      ToastService.showShortCenter('获取数据失败');
+                      //$rootScope.tagStartId = $rootScope.tagStartId-myConfig.fetchNum;
+
+                    });
+
+
 
                   }).error(function(response) {
 
@@ -134,8 +165,6 @@ angular.module('christiannews.controllers')
 
                 });
 
-                $state.reload("tab.my");
-
               }).error(function(response) {
 
               ToastService.showShortCenter('获取数据失败');
@@ -143,17 +172,11 @@ angular.module('christiannews.controllers')
 
             });
 
-          }).error(function(response) {
 
-          ToastService.showShortCenter('获取数据失败');
-          //$rootScope.tagStartId = $rootScope.tagStartId-myConfig.fetchNum;
-
-        });
-
-
-      }, function (reason) {
-        ToastService.showShortCenter("登录失败: " + reason);
-      });
+          }, function (reason) {
+            ToastService.showShortCenter("登录失败: " + reason);
+          });
+      }
 
     }
 
