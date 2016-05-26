@@ -161,6 +161,17 @@ angular.module('christiannews')
       },
     })
 
+    .state('tab.wechatusers', {
+      cache: false,
+      url:'/wechatusers',
+      views: {
+        'tab-users': {
+          templateUrl: 'templates/tab-wechatusers.html',
+          controller: 'WechatusersCtrl'
+        },
+      },
+    })
+
     .state('tab.tagcontent', {
       cache: false,
       url:'/tagcontent',
