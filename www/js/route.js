@@ -187,15 +187,7 @@ angular.module('christiannews')
       }
     })
 
-    .state('tab.info', {
-      url: '/info',
-      views: {
-        'tab-info': {
-          templateUrl: 'templates/about.html',
-          controller: 'AccountCtrl'
-        }
-      }
-    })
+
 
     .state('tab.my', {
       cache: false,
@@ -203,6 +195,16 @@ angular.module('christiannews')
       views: {
         'tab-my': {
           templateUrl: 'templates/account/index.html',
+          controller: 'AccountCtrl'
+        }
+      }
+    })
+
+    .state('tab.info', {
+      url: '/info',
+      views: {
+        'tab-my': {
+          templateUrl: 'templates/about.html',
           controller: 'AccountCtrl'
         }
       }

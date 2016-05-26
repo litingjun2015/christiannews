@@ -1,8 +1,9 @@
 angular.module('christiannews.controllers')
 
-.controller('AccountCtrl',  function($window,$scope,$state,$ionicHistory, UserService , ToastService, $cordovaAppVersion, $ionicPlatform, $cordovaEmailComposer, $fileLogger, $sce, $ionicActionSheet, $timeout, $http, $cordovaFileTransfer, $cordovaFile, $fileLogger, UtilityService) {
+.controller('AccountCtrl',  function(myConfig, $window,$scope,$state,$ionicHistory, UserService , ToastService, $cordovaAppVersion, $ionicPlatform, $cordovaEmailComposer, $fileLogger, $sce, $ionicActionSheet, $timeout, $http, $cordovaFileTransfer, $cordovaFile, $fileLogger, UtilityService) {
 
     $scope.user = UserService.getUser();
+    $scope.isUserLogin =  UserService.isUserLogin();
 
     $scope.version = null;
     $scope.url = '';
@@ -12,44 +13,78 @@ angular.module('christiannews.controllers')
     $scope.isandroid = ionic.Platform.isAndroid();
 
 
+    $scope.goAbout = function(){
+      $state.go("tab.info");
+    }
+
     $scope.goLoginWechat = function(){
 
-
-      var testData = {
-        "openid":" OPENID",
-        "nickname": "NICKNAME",
-        "sex":"1",
-        "province":"PROVINCE",
-        "city":"CITY",
-        "country":"COUNTRY",
-        "headimgurl":    "http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
-        //"headimgurl":    "",
-        "privilege":[
-          "PRIVILEGE1",
-          "PRIVILEGE2"
-        ],
-        "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
-      };
-      if(testData.headimgurl != "")
-      {
-        var newstr=testData.headimgurl.substring(0,testData.headimgurl.length-2);
-        testData.headimgurl = newstr + "132";
-      }
-
-      UserService.storeUser(testData);
-      $scope.user = UserService.getUser();
-      $scope.isUserLogin = true;
-
+      //var testData = {
+      //  "openid":"OPENID",
+      //  "nickname": "NICKNAME",
+      //  "sex":"1",
+      //  "province":"PROVINCE",
+      //  "city":"CITY",
+      //  "country":"COUNTRY",
+      //  "language":"zh_CN",
+      //  "headimgurl":    "http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
+      //  //"headimgurl":    "",
+      //  "privilege":[
+      //    "PRIVILEGE1",
+      //    "PRIVILEGE2"
+      //  ],
+      //  "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
+      //};
+      //if(testData.headimgurl != "")
+      //{
+      //  var newstr=testData.headimgurl.substring(0,testData.headimgurl.length-2);
+      //  testData.headimgurl = newstr + "132";
+      //}
+      //
+      //var postData = 'openid=OPENID2'
+      //  +'&nickname='+"NICKNAME2"
+      //  +'&sex='+"2"
+      //  +'&province='+"PROVINCE2"
+      //  +'&city='+"CITY2"
+      //  +'&country='+"COUNTRY2"
+      //  +'&language='+"zh_CN2"
+      //  +'&headimgurl='+"2http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46"
+      //  +'&privilege='+'["PRIVILEGE1","PRIVILEGE23"]'
+      //  +'&unionid='+"o6_bmasdasdsad6_2sgVt7hMZOPfL3";
+      //
+      //UserService.storeUser(testData);
+      //$scope.user = UserService.getUser();
+      //
+      //var url = myConfig.backend + "/addWechatuser/";
+      //console.log(url);
+      //$http({
+      //  method: 'POST',
+      //  url: url,
+      //  data: postData,
+      //  headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+      //  timeout: 3000,
+      //  cache: false
+      //})
+      //  .success(function (response)
+      //  {
+      //    console.log(response);
+      //
+      //  }).error(function(response) {
+      //
+      //  ToastService.showShortCenter('获取数据失败');
+      //  //$rootScope.tagStartId = $rootScope.tagStartId-myConfig.fetchNum;
+      //
+      //});
 
 
       var scope = "snsapi_userinfo",
         state = "_" + (+new Date());
       Wechat.auth(scope, state, function (response) {
         // you may use response.code to get the access token.
-        alert(JSON.stringify(response));
+        //alert(JSON.stringify(response));
         console.log(JSON.stringify(response));
 
-        var url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + "wxbd05c4fc6e17966e" + "&secret=" + "5c2fbf081e1d7fb33b0a7975f83d02a3" + "&code=CODE&grant_type=authorization_code";
+        var url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + "wxbd05c4fc6e17966e" + "&secret=" + "5c2fbf081e1d7fb33b0a7975f83d02a3" + "&code=" + response.code + "&grant_type=authorization_code";
         console.log(url);
         $http.get(url)
           .success(function (response)
@@ -64,8 +99,42 @@ angular.module('christiannews.controllers')
               {
                 console.log(response);
 
-                // save to db
+                var postData = 'openid=' + response.openid
+                  +'&nickname='+response.nickname
+                  +'&sex='+response.sex
+                  +'&province='+response.province
+                  +'&city='+response.city
+                  +'&country='+response.country
+                  +'&language='+response.language
+                  +'&headimgurl='+response.headimgurl
+                  +'&privilege='+response.privilege
+                  +'&unionid='+response.unionid;
+
                 UserService.storeUser(response);
+                $scope.user = UserService.getUser();
+
+                var url = myConfig.backend + "/addWechatuser/";
+                console.log(url);
+                $http({
+                  method: 'POST',
+                  url: url,
+                  data: postData,
+                  headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                  timeout: 3000,
+                  cache: false
+                })
+                  .success(function (response)
+                  {
+                    console.log(response);
+
+                  }).error(function(response) {
+
+                  ToastService.showShortCenter('获取数据失败');
+                  //$rootScope.tagStartId = $rootScope.tagStartId-myConfig.fetchNum;
+
+                });
+
+                $state.reload("tab.my");
 
               }).error(function(response) {
 
@@ -83,7 +152,7 @@ angular.module('christiannews.controllers')
 
 
       }, function (reason) {
-        alert("Failed: " + reason);
+        ToastService.showShortCenter("登录失败: " + reason);
       });
 
     }
@@ -242,21 +311,8 @@ angular.module('christiannews.controllers')
       $ionicHistory.clearCache();
       $ionicHistory.clearHistory();
 
-      if(ionic.Platform.isAndroid() || ionic.Platform.isIOS() )
-      {
-        var tags = [];
-        var alias;
-        jpushService.setTagsWithAlias(tags, alias);
-      }
+      $state.reload("tab.my");
 
-      $fileLogger.deleteLogfile().then(function() {
-        console.log('Logfile deleted');
-      });
-
-      $state.go('login');
-
-      //if (ionic.Platform.isAndroid())
-      //  $window.location.reload(true);
     }
 
 
