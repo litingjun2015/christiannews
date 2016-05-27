@@ -9697,7 +9697,7 @@
   },
   {
     "file": "js/controllers/recommend.js",
-    "hash": "18cf88fd667cb3da25974e51300a2aa8"
+    "hash": "86b3b54a86f95cd0a3955e443bdb7ce3"
   },
   {
     "file": "js/controllers/search.js",
@@ -10249,7 +10249,7 @@
   },
   {
     "file": "templates/about.html",
-    "hash": "e192d27033ff262e17847c29dad79465"
+    "hash": "5297c3f3cf73ff175ea35d5a51329b52"
   },
   {
     "file": "templates/account/index.html",
