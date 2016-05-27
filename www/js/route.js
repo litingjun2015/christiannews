@@ -12,7 +12,8 @@ angular.module('christiannews')
     .state('tab', {
       url: '/tab',
       abstract: true,
-      templateUrl: 'templates/tabs.html'
+      templateUrl: 'templates/tabs.html',
+      controller: 'TabsCtrl'
     })
 
     // Each tab has its own nav history stack:

@@ -29,7 +29,7 @@ navigation history that also transitions its views in and out.
     <!--<ion-nav-view name="tab-info"></ion-nav-view>-->
   <!--</ion-tab>-->
 
-  <ion-tab title="邻舍" icon-off="ion-ios-person-outline" icon-on="ion-ios-person" href="#/tab/wechatusers">
+  <ion-tab title="邻舍" icon-off="ion-ios-person-outline" icon-on="ion-ios-person" href="#/tab/wechatusers" hidden="{{user.id!=1}}">
     <ion-nav-view name="tab-users"></ion-nav-view>
   </ion-tab>
 
