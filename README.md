@@ -17,6 +17,9 @@ ionic plugin add cordova-plugin-wechat --variable wechatappid=wx8ce2e64af40f99d5
 cordova plugin remove "cordova-plugin-wechat"
 ionic plugin add cordova-plugin-wechat --variable wechatappid=wxbd05c4fc6e17966e
 
+## test
+ionic plugin add cordova-plugin-wechat --variable wechatappid=wx21ded7dba68708a8
+
 ## office debug 签名
 4b068abcf712398459a0398fc648cab5
 

@@ -101,7 +101,7 @@ angular.module('christiannews.controllers')
             //alert(JSON.stringify(response));
             console.log(JSON.stringify(response));
 
-            var url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + "wxbd05c4fc6e17966e" + "&secret=" + "5c2fbf081e1d7fb33b0a7975f83d02a3" + "&code=" + response.code + "&grant_type=authorization_code";
+            var url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + myConfig.AppID + "&secret=" + myConfig.AppSecret + "&code=" + response.code + "&grant_type=authorization_code";
             console.log(url);
             $http.get(url)
               .success(function (response)

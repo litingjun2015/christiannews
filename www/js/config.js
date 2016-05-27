@@ -16,9 +16,14 @@ angular.module('christiannews')
 
      'fetchNum': 8,
 
-     // bizapp / duangwifi
-     'client_id': 'EUyhtH5eKgXlJvAd-p3SH3yGwJHMGR2i',
-     'client_secret': 'xNOaiMYndFMmver8qkVzn5Wn2T9eZMEc',
+     // product
+     'AppID': 'wxbd05c4fc6e17966e',
+     'AppSecret': '5c2fbf081e1d7fb33b0a7975f83d02a3',
+
+     // test
+     //'AppID': 'wx21ded7dba68708a8',
+     //'AppSecret': '5eb67a03cd1c18e955caf21c03e55956',
+
 
      'view_balanceonly': false,
    }
