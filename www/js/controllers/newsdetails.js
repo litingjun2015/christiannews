@@ -110,6 +110,8 @@ angular.module('christiannews.controllers')
 
     $scope.init = function() {
 
+      console.log(device);
+
       var url= myConfig.backend + "/updatePageview/newsid=" + $stateParams.newsId + "&uuid=" + device.uuid;
       console.log(url);
       $http.get(url)

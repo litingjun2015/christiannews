@@ -41,8 +41,8 @@ app.run(function($ionicPlatform, $rootScope, $ionicHistory, $window, UtilityServ
       StatusBar.styleDefault();
     }
 
-    var string = device.uuid;
-    console.log("uuid: " + string);
+    //var string = device.uuid;
+    //console.log("uuid: " + string);
 
   });
 

@@ -49,7 +49,7 @@
   },
   {
     "file": "js/app.js",
-    "hash": "ab59faabf6712193559f338b296400f4"
+    "hash": "d7c03a31cb7d34b66a4de1f0c5093648"
   },
   {
     "file": "js/config.js",
@@ -89,7 +89,7 @@
   },
   {
     "file": "js/controllers/newsdetails.js",
-    "hash": "475f0d632452a24554b3eeb61e5df7be"
+    "hash": "a236aa00cadfa02b1836e9771b483949"
   },
   {
     "file": "js/controllers/opinion.js",
