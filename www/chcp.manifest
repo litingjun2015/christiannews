@@ -45,11 +45,11 @@
   },
   {
     "file": "index.html",
-    "hash": "1d75318db5d35986f3dcc03f7d63d719"
+    "hash": "a6c36d8522725b1482cb6edaca6299cc"
   },
   {
     "file": "js/app.js",
-    "hash": "f824d6caf18a95e6ffcace5613fd41f7"
+    "hash": "ab59faabf6712193559f338b296400f4"
   },
   {
     "file": "js/config.js",
@@ -72,6 +72,10 @@
     "hash": "a7ccc49fe3c6b6e085e76e3f65f1a0b9"
   },
   {
+    "file": "js/controllers/deviceusers.js",
+    "hash": "51de101bcd592225d6b34e72ec85c7c3"
+  },
+  {
     "file": "js/controllers/home.js",
     "hash": "f915b0d6fbd6fd5b143c7b1602e8ff2c"
   },
@@ -85,7 +89,7 @@
   },
   {
     "file": "js/controllers/newsdetails.js",
-    "hash": "c910c4570d885f4b3a29eab78ecc2e1e"
+    "hash": "475f0d632452a24554b3eeb61e5df7be"
   },
   {
     "file": "js/controllers/opinion.js",
@@ -141,7 +145,7 @@
   },
   {
     "file": "js/route.js",
-    "hash": "74b6b8c05689c67151f116d5d7c2eb94"
+    "hash": "6fca61b9e3a837da15c204da62ec60b9"
   },
   {
     "file": "js/services.js",
@@ -688,6 +692,10 @@
     "hash": "b0375ce7fd20d7140a9cccf060e9849e"
   },
   {
+    "file": "templates/tab-deviceusers.html",
+    "hash": "206f98d92358371cee9c9e1d8eaa680d"
+  },
+  {
     "file": "templates/tab-home.html",
     "hash": "42b4e90f949b9a2e49ad3672d367ccbf"
   },
@@ -737,7 +745,7 @@
   },
   {
     "file": "templates/tabs.html",
-    "hash": "9b17c01c006e6cabd2617763a4b6cbe6"
+    "hash": "c24db0b28204a28c30db53efbcf0bc16"
   },
   {
     "file": "templates/tag/mytagedit.html",
