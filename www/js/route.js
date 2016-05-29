@@ -173,6 +173,17 @@ angular.module('christiannews')
       },
     })
 
+    .state('tab.deviceusers', {
+      cache: false,
+      url:'/deviceusers',
+      views: {
+        'tab-users': {
+          templateUrl: 'templates/tab-deviceusers.html',
+          controller: 'DeviceusersCtrl'
+        },
+      },
+    })
+
     .state('tab.tagcontent', {
       cache: false,
       url:'/tagcontent',

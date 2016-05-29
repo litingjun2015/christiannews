@@ -40,6 +40,10 @@ app.run(function($ionicPlatform, $rootScope, $ionicHistory, $window, UtilityServ
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    var string = device.uuid;
+    console.log("uuid: " + string);
+
   });
 
 

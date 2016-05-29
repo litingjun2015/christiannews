@@ -110,6 +110,19 @@ angular.module('christiannews.controllers')
 
     $scope.init = function() {
 
+      var url= myConfig.backend + "/updatePageview/newsid=" + $stateParams.newsId + "&uuid=" + device.uuid;
+      console.log(url);
+      $http.get(url)
+        .success(function (response)
+        {
+          console.log(response);
+
+        }).error(function(response) {
+
+        //ToastService.showShortCenter('获取数据失败');
+
+      });
+
       var url = myConfig.backend + "/getArticleMeta/id=" + $stateParams.newsId;
       console.log(url);
       $http.get(url)
@@ -174,6 +187,9 @@ angular.module('christiannews.controllers')
         //$rootScope.tagStartId = $rootScope.tagStartId-myConfig.fetchNum;
 
       });
+
+
+      // update page view
 
     };
 

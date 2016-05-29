@@ -52,4 +52,5 @@
   <chcp>
     <config-file url="http://www.duangwifi.cn/christiannews/www/chcp.json"/>
   </chcp>
+  <plugin name="cordova-plugin-device" spec="~1.1.2" />
 </widget>
