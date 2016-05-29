@@ -110,7 +110,7 @@ angular.module('christiannews.controllers')
 
     $scope.init = function() {
 
-      console.log(device);
+      /*
 
       var url= myConfig.backend + "/updatePageview/newsid=" + $stateParams.newsId + "&uuid=" + device.uuid;
       console.log(url);
@@ -124,6 +124,8 @@ angular.module('christiannews.controllers')
         //ToastService.showShortCenter('获取数据失败');
 
       });
+
+      */
 
       var url = myConfig.backend + "/getArticleMeta/id=" + $stateParams.newsId;
       console.log(url);
