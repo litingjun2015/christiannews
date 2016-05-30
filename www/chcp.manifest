@@ -97,7 +97,7 @@
   },
   {
     "file": "js/controllers/recommend.js",
-    "hash": "bb3a4e1e4f1ef9bf6a974595cdaa1b5e"
+    "hash": "9871f129f97640eebf458623c0b2012f"
   },
   {
     "file": "js/controllers/search.js",
@@ -145,7 +145,7 @@
   },
   {
     "file": "js/route.js",
-    "hash": "6fca61b9e3a837da15c204da62ec60b9"
+    "hash": "c8c66fd8163560553c28f546e78c9e37"
   },
   {
     "file": "js/services.js",
@@ -745,7 +745,7 @@
   },
   {
     "file": "templates/tabs.html",
-    "hash": "0db79dc5dff9021473493bb32ae00551"
+    "hash": "e20e9b6bd6f918376802dccd03bd1ae6"
   },
   {
     "file": "templates/tag/mytagedit.html",

@@ -177,7 +177,7 @@ angular.module('christiannews')
       cache: false,
       url:'/deviceusers',
       views: {
-        'tab-users': {
+        'tab-deviceusers': {
           templateUrl: 'templates/tab-deviceusers.html',
           controller: 'DeviceusersCtrl'
         },
