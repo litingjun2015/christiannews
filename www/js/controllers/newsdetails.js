@@ -110,7 +110,7 @@ angular.module('christiannews.controllers')
 
     $scope.init = function() {
 
-      /*
+
 
       var url= myConfig.backend + "/updatePageview/newsid=" + $stateParams.newsId + "&uuid=" + device.uuid;
       console.log(url);
@@ -125,7 +125,7 @@ angular.module('christiannews.controllers')
 
       });
 
-      */
+
 
       var url = myConfig.backend + "/getArticleMeta/id=" + $stateParams.newsId;
       console.log(url);

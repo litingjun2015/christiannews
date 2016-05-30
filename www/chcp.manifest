@@ -9693,7 +9693,7 @@
   },
   {
     "file": "js/controllers/newsdetails.js",
-    "hash": "6cf65e53a2499b8d9ea79c213c3b2bb8"
+    "hash": "6d048bf764eecce9da7bccd801627ac9"
   },
   {
     "file": "js/controllers/opinion.js",
@@ -9701,7 +9701,7 @@
   },
   {
     "file": "js/controllers/recommend.js",
-    "hash": "90195d9272fa1732a3c308cb0aca4ea3"
+    "hash": "e25653aebe0804995a1e0d09949d88c3"
   },
   {
     "file": "js/controllers/search.js",
