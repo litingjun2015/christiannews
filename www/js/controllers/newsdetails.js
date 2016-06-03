@@ -96,35 +96,41 @@ angular.module('christiannews.controllers')
       myPopup.then(function(res) {
         console.log('Tapped!', res);
 
-        $scope.user = UserService.getUser();
+        if(res != undefined)
+        {
+          $scope.user = UserService.getUser();
 
-        var postData = 'article_id=' + $stateParams.newsId
-          +'&user_id='+$scope.user.id
-          +'&content='+res;
-
-
-        var url = myConfig.backend + "/addComment/";
-        console.log(url);
-        $http({
-          method: 'POST',
-          url: url,
-          data: postData,
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-          timeout: 3000,
-          cache: false
-        })
-          .success(function (response)
-          {
-            console.log(response);
-            $state.reload("news-detail", { 'newsId': $stateParams.newsId});
+          var postData = 'article_id=' + $stateParams.newsId
+            +'&user_id='+$scope.user.id
+            +'&content='+res;
 
 
-          }).error(function(response) {
+          var url = myConfig.backend + "/addComment/";
+          console.log(url);
+          $http({
+            method: 'POST',
+            url: url,
+            data: postData,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+            timeout: 3000,
+            cache: false
+          })
+            .success(function (response)
+            {
+              console.log(response);
+              $state.reload("news-detail", { 'newsId': $stateParams.newsId});
 
-          ToastService.showShortCenter('获取数据失败');
-          //$rootScope.tagStartId = $rootScope.tagStartId-myConfig.fetchNum;
 
-        });
+            }).error(function(response) {
+
+            ToastService.showShortCenter('获取数据失败');
+            //$rootScope.tagStartId = $rootScope.tagStartId-myConfig.fetchNum;
+
+          });
+
+
+
+        }
 
       });
 
