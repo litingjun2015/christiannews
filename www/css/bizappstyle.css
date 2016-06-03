@@ -149,19 +149,19 @@
   vertical-align: middle;
 }
 
-.modal1 {
-  display: block;
-  position: absolute;
-  top: 30%;
-  left: 12%;
-  /*bottom:1000px;*/
-  z-index: 10;
-  overflow: hidden;
-  min-height: 49%;
-  width: 70%;
-  background-color: #fff;
-  /*background-color:#0a9ec7;*/
-}
+/*.modal1 {*/
+  /*display: block;*/
+  /*position: absolute;*/
+  /*top: 30%;*/
+  /*left: 12%;*/
+  /*!*bottom:1000px;*!*/
+  /*z-index: 10;*/
+  /*overflow: hidden;*/
+  /*min-height: 49%;*/
+  /*width: 70%;*/
+  /*background-color: #fff;*/
+  /*!*background-color:#0a9ec7;*!*/
+/*}*/
 
 
 /**

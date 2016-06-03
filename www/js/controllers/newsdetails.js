@@ -4,7 +4,7 @@
 
 angular.module('christiannews.controllers')
 
-  .controller('NewsDetailCtrl', function($location, $ionicScrollDelegate, UserService, $ionicPopup, UtilityService, $state, $scope, $ionicHistory, $stateParams, Chats, $http, myConfig, ToastService) {
+  .controller('NewsDetailCtrl', function($ionicModal, $location, $ionicScrollDelegate, UserService, $ionicPopup, UtilityService, $state, $scope, $ionicHistory, $stateParams, Chats, $http, myConfig, ToastService) {
 
     //$scope.origurl = "http://192.168.31.207:3000/article/" + $stateParams.newsId;
     //$scope.url = $sce.trustAsResourceUrl($scope.origurl);
@@ -12,6 +12,35 @@ angular.module('christiannews.controllers')
     $scope.newsmeta = [];
     $scope.collected = false;
     $scope.user = UserService.getUser();
+
+
+
+    $ionicModal.fromTemplateUrl('templates/news-share-modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+    $scope.openModal = function() {
+      $scope.modal.show();
+      //share()
+    };
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
+    // Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function() {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
+
 
 
 
@@ -112,18 +141,24 @@ angular.module('christiannews.controllers')
 
 
 
-      var url= myConfig.backend + "/updatePageview/newsid=" + $stateParams.newsId + "&uuid=" + device.uuid;
-      console.log(url);
-      $http.get(url)
-        .success(function (response)
-        {
-          console.log(response);
+      if(ionic.Platform.isAndroid()||ionic.Platform.isIOS())
+      {
 
-        }).error(function(response) {
+        var url= myConfig.backend + "/updatePageview/newsid=" + $stateParams.newsId + "&uuid=" + device.uuid;
+        console.log(url);
+        $http.get(url)
+          .success(function (response)
+          {
+            console.log(response);
 
-        //ToastService.showShortCenter('获取数据失败');
+          }).error(function(response) {
 
-      });
+          //ToastService.showShortCenter('获取数据失败');
+
+        });
+
+      }
+
 
 
 
@@ -209,7 +244,58 @@ angular.module('christiannews.controllers')
         alert("Failed: " + reason);
       });
 
-    }
+    };
+
+    $scope.sendtofriend = function() {
+
+
+      //{
+      //  label: "会话",
+      //    value: 0
+      //},
+      //{
+      //  label: "朋友圈",
+      //    value: 1
+      //},
+      //{
+      //  label: "收藏",
+      //    value: 2
+      //}
+
+      var scene = {
+        label: "会话",
+        value: 0
+      };
+
+      var params = {
+        scene: scene.value
+      };
+      console.log(scene);
+
+      params.message = {
+        title: "[TEST]",
+        description: "[TEST]Sending from test application",
+        mediaTagName: "TEST-TAG-001",
+        messageExt: "这是第三方带的测试字段",
+        messageAction: "<action>dotalist</action>",
+        media: {}
+      };
+
+      params.message.title = $scope.newsmeta.title;
+      params.message.description = "";
+      params.message.thumb = $scope.newsmeta.thumb;
+      params.message.media.type = Wechat.Type.LINK;
+      params.message.media.webpageUrl = myConfig.backend + "/webarticle/" + $stateParams.newsId;
+
+      console.log(params);
+
+      Wechat.share(params, function () {
+        ToastService.showShortCenter("分享成功");
+      }, function (reason) {
+        ToastService.showShortCenter("Failed: " + reason);
+      });
+
+    };
 
     $scope.collect = function() {
 

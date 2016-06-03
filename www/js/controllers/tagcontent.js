@@ -22,7 +22,7 @@ angular.module('christiannews.controllers')
 
     //console.log("id: "+ id);
     //console.log("$stateParams.tagId: " + $stateParams.tagId);
-    return $stateParams.tagId == id ? 'active':'';
+    return $stateParams.tagId == id ? 'myactive':'';
   };
 
   $scope.goRecommend = function(tag) {

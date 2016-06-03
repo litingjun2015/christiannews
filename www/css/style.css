@@ -1,5 +1,21 @@
 /* Empty. Add your own CSS if you like */
 
+
+.modal1 {
+  display: block;
+  position: absolute;
+  /*top: 30%;*/
+  left: 0%;
+  bottom:0px;
+  z-index: 10;
+  overflow: hidden;
+  min-height: 29%;
+  width: 100%;
+  background-color: #fff;
+  /*background-color:#0a9ec7;*/
+}
+
+
 .popup-container {
   background-color: transparent;
 }
@@ -60,7 +76,7 @@ li a:hover:not(.active) {
   background-color: #111;
 }
 
-.active {
+.myactive {
   background-color: #4CAF50;
 }
 
