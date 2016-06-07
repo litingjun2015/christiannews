@@ -121,7 +121,7 @@
   },
   {
     "file": "js/controllers/tagcontent.js",
-    "hash": "16c806f252e22c5a634376954f0d6abf"
+    "hash": "d474365c0891acb882b3bbfc50a21d8e"
   },
   {
     "file": "js/controllers/tagedit.js",
@@ -765,7 +765,7 @@
   },
   {
     "file": "templates/tag/tagcontent.html",
-    "hash": "41f7ae3ba6f688b76058c5808355eb3c"
+    "hash": "354888eccb3d4073defbc8bd6fd36797"
   },
   {
     "file": "templates/tag/tagedit.html",

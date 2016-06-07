@@ -14,6 +14,7 @@ angular.module('christiannews.controllers')
 
   $scope.goArticle = function(id) {
 
+    console.log("goArticle: " + id);
     console.log(UtilityService.getTagPosition());
     $state.go("news-detail", { 'newsId':id})
   };
