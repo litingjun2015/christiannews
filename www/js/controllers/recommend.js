@@ -55,7 +55,7 @@ angular.module('christiannews.controllers')
 
   $scope.loadDefault = function() {
 
-    $rootScope.selectedtags = [{"name":"教会","id":2},{"name":"事工","id":3},{"name":"国际","id":4},{"name":"社会","id":5},{"name":"科技&财经","id":6},{"name":"文化","id":7},{"name":"观点","id":8}];
+    $rootScope.selectedtags = [{"name":"初信答疑","id":1},{"name":"见证故事","id":2},{"name":"婚前婚后","id":17},{"name":"养儿育女","id":18},{"name":"深度思考","id":33}];
     window.localStorage.setItem('selecttags', JSON.stringify($rootScope.selectedtags));
 
   };
@@ -149,6 +149,10 @@ angular.module('christiannews.controllers')
       if($rootScope.selectedtags.length == 0)
         $scope.loadDefault();
 
+      // 去掉基督邮报
+      if($rootScope.selectedtags[0].name == '教会')
+        $scope.loadDefault();
+
       var left = 0;
       if($stateParams.positionLeft == undefined)
         left = 0;
@@ -171,7 +175,7 @@ angular.module('christiannews.controllers')
 
   $scope.doRefresh = function() {
 
-    console.log("---------------- cordova-hot-code-push test js updates 0.9.13.4");
+    console.log("---------------- cordova-hot-code-push test js updates 0.9.13.5");
 
     var url = myConfig.backend + "/listLatestArticles/start="+ $rootScope.recommendStartId + "&fetch=" + myConfig.fetchNum;
     console.log(url);
