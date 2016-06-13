@@ -81,7 +81,7 @@
   },
   {
     "file": "js/controllers/deviceusers.js",
-    "hash": "51de101bcd592225d6b34e72ec85c7c3"
+    "hash": "bbf936ec431ec49bee41375a6750f2e9"
   },
   {
     "file": "js/controllers/home.js",
@@ -105,7 +105,7 @@
   },
   {
     "file": "js/controllers/recommend.js",
-    "hash": "0a63b4af0c69c8e566c104ee0fc321b7"
+    "hash": "6e35922f38f120f8204c51f5740a914d"
   },
   {
     "file": "js/controllers/search.js",
@@ -657,7 +657,7 @@
   },
   {
     "file": "templates/about.html",
-    "hash": "20501064c5ef015ec4a2a89f7fd4896f"
+    "hash": "5ee6f5778fdc9eb1d63b635d855de885"
   },
   {
     "file": "templates/account/index.html",
@@ -705,7 +705,7 @@
   },
   {
     "file": "templates/tab-deviceusers.html",
-    "hash": "206f98d92358371cee9c9e1d8eaa680d"
+    "hash": "b7dc0946d14ba883f694e0d578e5dce5"
   },
   {
     "file": "templates/tab-home.html",

@@ -201,6 +201,25 @@ angular.module('christiannews.controllers')
 
     });
 
+
+    //////////////////////////
+    var url = myConfig.backend + "/getDeviceUsersNum";
+    console.log(url);
+    $http.get(url)
+      .success(function (response)
+      {
+        console.log(response);
+
+        $scope.device_num = response[0].num;
+
+
+      }).error(function(response) {
+
+      ToastService.showShortCenter('获取数据失败');
+      //$rootScope.StartId = $rootScope.StartId-myConfig.fetchNum;
+
+    });
+
     $scope.$broadcast('scroll.refreshComplete');
   };
 
